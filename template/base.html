@@ -1,0 +1,114 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
+    <link rel="stylesheet" href="{% static "style.css" %}"type="text/css" />
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <a class="navbar-brand" href="{% url 'index' %}"><img id="logo" class="pl-4 img-fluid d-md-block" src="{% static "images/logo.jpg" %}" alt=""></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% block navbar %}{% endblock %}
+    </ul>
+  </div>
+</nav>
+</header>
+    
+
+{% block content %}{% endblock %}
+
+
+<article>
+  <section>
+  <div class="row enquiry-container">
+    <div class="col-md-2"></div>
+      
+    <div class="col-md-4">
+      <h5 class ="enquiry-header">Let us help you find the most suitable maid</h5>
+      <p class ="enquiry-content text-justify">OnlineMaid is the leading platform to find maids from local service providers.  Use our platform to shortlist potential maids and get local service providers to furnish you with further details. All service providers are vetted!</p>
+      <button type="button" class="btn enquiry-btn" onclick="window.location.href='enquiry.html'">Get Started Here</button>
+    </div>
+      
+    <div class="col-md-4 ">
+      <img class="img-responsive w-100" src="{% static "images/enquiry-image.jpg" %}" alt="Card image cap">
+  </div>
+  
+    <div class="col-md-2"></div>
+  </div>
+  </section>
+</article>
+
+
+<footer class="page-footer font-small footer-style pt-4">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row d-flex justify-content-around">
+      
+      <div class=" footer-left col-md-3 mt-md-0 mt-3">
+        <p class="footer-content">Reach us @ +65 8200 6162</p>
+        <p class= "footer-content">sales@onlinemaid.com.sg</p>
+        
+        <!-- social -->
+        <a href="#" class="social so1 fa fa-facebook"></a>
+        <a href="#" class="social fa fa-twitter"></a>
+        <a href="#" class="social fa fa-google-plus"></a>
+        <a href="#" class="social fa fa-linkedin"></a>
+        <a href="#" class="social fa fa-pinterest"></a>
+      </div>
+      
+      <div class="col-md-3 mb-md-0 mb-3">
+        <ul class="list-unstyled">
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="searchMaid.html">Search Maid</a>
+          </li>
+          <li>
+            <a href="enquiry.html">Enquiry</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="col-md-3 mb-md-0 mb-3">
+        <ul class="list-unstyled">
+          <li>
+            <a href="searchMaid.html">Agency log In</a>
+          </li>
+          <li>
+            <a href="searchMaid.html">Agency Signed Up</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  
+  <div class="footer-copyright text-center py-3">© 2019 Copyright OnlineMaid.  All Rights Reserved</div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

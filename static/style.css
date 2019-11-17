@@ -1,0 +1,469 @@
+
+/*overall*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #737373;
+    font-weight: 500;
+}
+
+
+
+/*header*/
+#logo {
+    height: 55px; 
+    max-width:100%;
+}
+
+.active{
+     font-size: 25px;
+}
+
+.nav-item{
+    padding: 0px 20px;
+    font-weight:600;
+    font-size: 18px;
+
+}
+
+.nav-link {
+        color: #0571bb !important;
+}
+
+.active .nav-link {
+   color: #234c7a !important;
+   font-weight: bold;
+}
+
+
+/*footer*/
+.footer-style{
+    background: #666666;
+}
+
+
+.footer-content, 
+.social,
+.footer-copyright,
+.list-unstyled a {
+    color: white;
+}
+
+
+.footer-left a:hover,
+.list-unstyled a:hover {
+   color:orange;
+}
+
+
+.list-unstyled a {
+   text-decoration: none; 
+}
+
+
+.footer-copyright{
+    font-size: 12px;
+}
+
+
+
+/*Section 1-jumbotron*/
+.j1 {
+    background-image: url("images/banner.jpg");
+    background-size: cover;
+    color: white;
+    padding : 120px 0px;
+    margin: 0px 0px 120px;
+     }
+     
+
+.maids-portal,
+.getStarted{
+   text-align: center;
+    font-weight: 600;
+    color: white;
+    margin: 0px 20px 20px 20px;
+    margin-bottom: 20px;
+}
+
+
+.getStarted{
+    font-size: 20px;
+}
+
+     
+.form-row {
+    padding: 50px 0px 0px 0px;
+}   
+
+
+.form-control {
+    color: #737373;
+    font-weight: 500;
+}
+
+
+.btn {
+    background-color: #808080;
+    color: white;
+    padding: 0px 40px;
+    font-weight: 600;
+}
+
+
+.btn:hover {
+    background: orange;
+    color: white;
+}
+     
+@media (max-width:768px) {
+    .form-row {
+        padding:40px;
+    }
+}
+     
+/*section 2 - 4 Steps*/
+.section-header{
+    text-align: center;
+    margin: 80px 0px 10px 0px ;
+    line-height: 25px;
+    font-weight: 700;
+    position: relative;
+    opacity: 0.9;
+}
+
+
+.steps-line{
+    text-align: center;
+    margin: 20px;
+    padding: 0px;
+    line-height: 25px;
+    font-size: 18px;
+}
+
+
+.four-steps-container {
+    margin: 50px 0px 0px 0px;
+}
+
+
+.steps-box {
+    background-color: orange;
+    text-align: center;
+    font-weight: 500;
+    color: white;
+}
+
+
+.steps-box-content {
+    color: white;
+}
+
+
+.i{
+    font-size: 100px;
+}
+
+
+
+/*index.html section 3*/
+.six-choices-1 {
+   margin: 30px 20px 30px 20px; 
+}
+
+
+.six-choices-2 {
+   margin: 30px 20px 20px 20px; 
+}
+
+
+.maid-experience a:hover{
+    text-decoration: none;
+}
+
+
+.maid-experience p {
+    color: orange;
+    font-size: 17px;
+}
+
+
+
+/*section 4 - enquiry-box*/
+.enquiry-container {
+    min-height: 350px;
+    background-color: #999999;
+    color: white;
+    margin: 80px 0px 0px;
+}
+
+
+.enquiry-header {
+    margin: 40px 30px 20px;
+    /*margin-bottom: 20px;*/
+    color: white;
+}
+
+
+.enquiry-content {
+ font-size: 16px;
+ margin: 40px 30px 20px;
+ 
+ color: white;
+}
+
+
+.enquiry-btn{
+    background: orange;
+    color: white;
+    padding: 0px 20px;
+    min-height: 38px;
+    margin: 0px 30px 30px;
+    font-weight: 600
+}
+
+.contact-form .btn-primary:hover,
+.enquiry-btn:hover,
+.bio-btn:hover{
+    background: #1d93e2;
+    color: white;
+    border: none;
+}
+
+
+/*section 5 - testimonial*/
+.carousel {
+	margin: 50px auto;
+	padding: 0 70px;
+}
+
+.carousel .item {
+	/*color: #999;*/
+	font-size: 14px;
+    text-align: center;
+	overflow: hidden;
+    min-height: 290px;
+}
+
+
+.carousel .item .img-box {
+	width: 300px;
+	height: 300px;
+	margin: 0 auto;
+	padding: 5px;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+}
+
+
+.carousel .img-box img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border-radius: 50%;
+}
+
+
+.carousel .testimonial {
+	padding: 30px 0 10px;
+}
+
+
+.carousel .overview {	
+	font-style: italic;
+}
+
+
+.overview b {
+	text-transform: uppercase;
+	color: #7AA641;
+}
+
+
+.carousel .carousel-control {
+	width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    top: 50%;
+	background: none;
+}
+
+
+.carousel-control i {
+    font-size: 68px;
+	line-height: 42px;
+    position: absolute;
+    display: inline-block;
+	color: rgba(0, 0, 0, 0.8);
+    text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
+}
+
+
+.carousel .carousel-indicators {
+	bottom: -40px;
+}
+
+
+.carousel-indicators li, .carousel-indicators li.active {
+	width: 10px;
+	height: 10px;
+	margin: 1px 3px;
+	border-radius: 50%;
+}
+
+
+.carousel-indicators li {	
+	background: #999;
+	border-color: transparent;
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}
+
+
+.carousel-indicators li.active {	
+	background: #555;		
+	box-shadow: inset 0 2px 1px rgba(0,0,0,0.2);
+}
+
+
+
+
+
+/*searchMaid Jumbotron*/
+
+.header-jumbotron {
+   background-image: url("images/banner.jpg");
+    background-size: cover;
+    padding : 30px 0px 30px 125px;
+    /*margin-bottom: 30px;*/
+    opacity: 0.8;
+     } 
+     
+     
+.header-jumbotron-text{
+    color: white;
+    font-weight: 700
+}
+
+     
+.bio-container {
+    margin: 110px 0px 0px 0px;
+    
+}
+
+
+@media (min-width:768px) {
+    .bio-container {
+       padding-left: 50px;
+    }
+}
+   
+
+.padding-left{
+    padding-left: 40px;
+}
+
+.filter {
+    margin: 10px 30px 20px 0px;
+    
+    color: #737373;
+}
+
+
+.filter-dropdown-box{
+    height: 50px;
+}
+
+
+.maid-name{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 15px 0px 0px;
+}
+
+
+.small-label{
+    font-size:13px;
+    margin: 7px 0px;
+}
+
+.big-label{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.name-and-country,
+.age-marital-status,
+.maid-type,
+.agency-name{
+   padding: 0px 0px 5px 10px; 
+   margin: 0px 10px 2px;
+   border-bottom-color: #e6e6e6;
+   border-top:none;
+}
+
+
+.bio-btn{
+    padding: 7px 0px;
+    margin: 5px 10px;
+    border: 0px;
+    background: orange;
+    font-weight: 600
+}
+
+
+.pagination-margin{
+    margin: 50px 0px 0px;
+}
+
+@media (min-width:768px) {
+    .card-deck{
+        margin-bottom:50px;
+    }
+}
+
+@media (max-width:768px) {
+    .card-deck{
+        padding: 0px 20px;
+    }
+}
+
+
+/*enquiry-form*/
+.searchmaid-body,
+.enquiry-body{
+        background: #f5f5f5;
+    }
+    
+    
+.contact-form {
+    padding: 10px 50px;
+}
+    
+    
+.contact-form .btn  {
+    min-height: 38px;
+    border-radius: 5px;
+    min-width: 150px;
+    background: orange;
+    border: none;
+}
+
+
+.hint-text {
+    font-size: 18px;
+    padding-bottom: 30px;
+    opacity: 0.9;
+}
+
+
+.particular {
+    opacity: 0.7;
+}
+
+
+    
+    
+  
+

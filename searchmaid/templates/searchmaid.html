@@ -1,0 +1,150 @@
+
+{% extends 'base.html'%} 
+{% load static %}
+{% block title %}
+    Search Maid
+{% endblock %}
+
+{% block navbar %}
+  <li class="nav-item ">
+    <a class="nav-link" href="{% url 'index' %}">Home</a>
+  </li>
+  <li class="nav-item active">
+    <a class="nav-link" href="{% url 'searchmaid' %}">Search Maid</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'contactus' %}">Enquiry</a>
+  </li>
+{% endblock %}
+
+{% block content %}
+<article class ="searchmaid-body">
+    <section>
+      <div class="header-jumbotron">
+        <h4 class="header-jumbotron-text">Search Maids</h4>
+      </div>
+    </section>
+
+    <section>
+      <div class="row bio-container">
+        <!--<div class="col-md-1"></div>-->
+        
+        <div class="col-md-3 padding-left">
+          <h5><b>Filter</b></h5>
+          <div class="filter">
+            <select id="inputState" class="form-control filter-dropdown-box">
+              <option selected>Nationality</option>
+              <option>Filipino</option>
+              <option>Indonesian</option>
+              <option>Indian</option>
+              <option>Myanmarese</option>
+              <option>Others</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <select id="inputState" class="form-control filter-dropdown-box">
+              <option selected>Type of Maid</option>
+              <option>New</option>
+              <option>Transfer</option>
+              <option>Experience</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <select id="inputState" class="form-control filter-dropdown-box">
+              <option selected>Main Responsibility</option>
+              <option>Cooking </option>
+              <option>Care for children</option>
+              <option>Care for elderly</option>
+              <option>Care for disabled</option>
+              <option>General housework</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <select id="inputState" class="form-control filter-dropdown-box">
+              <option selected>Language Ability</option>
+              <option>English</option>
+              <option>Mandarin/ Chinese Dialect</option>
+              <option>Bahasa indonesia</option>
+              <option>Hindi/ Tamil</option>
+              <option>Burmese</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <select id="inputState" class="form-control filter-dropdown-box">
+              <option selected>Marital Status</option>
+              <option>Single</option>
+              <option>Married</option>
+              <option>Widowed</option>
+              <option>Divorced/ Tamil</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+
+          <div class="filter">
+            <select id="inputState" class="form-control filter-dropdown-box">
+              <option selected>Age</option>
+              <option>23 to 25</option>
+              <option>26 to 30</option>
+              <option>31 t0 35</option>
+              <option>36 to 40</option>
+              <option>41 to 50</option>
+              <option>No Preference</option>
+            </select>
+          </div>
+        </div>
+      
+
+  <div class="col-md-8 maid-bio">
+    <div class="row">
+    {%for sm in searchmaid%}
+    
+        <div class="card mb-3 ml-3 mr-3" style="width: 15rem">
+              <img src="{{sm.maid_photo.url}}" class="card-img-top" alt="Card image cap">
+              <ul class="list-group list-group-flush card-deck-margin ">
+                <li class="list-group-item name-and-country">
+                  <h5 class="card-title maid-name">{{sm.name}}</h5>
+                  <p class="card-text">{{sm.natonality}}</p>
+                </li>
+                
+                <li class="list-group-item age-marital-status">
+                  <div class="row">
+                    <div class="col">
+                      <p class ="small-label">Age</p>
+                      <p>{{sm.age}} Yrs old</p>
+                    </div>
+                    <div class="col">
+                      <p class= "small-label" >Marital Status</p>
+                      <p>{{sm.marital_status}}</p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="list-group-item maid-type">
+                  <p class ="small-label">Type of maid</p>
+                  <p>{{sm.type_of_maid}}</p>
+                </li>
+                
+                <li class="list-group-item agency-name">
+                  <p class= "small-label">Agency</p>
+                  <p>{{agency_name}}</p>
+                </li>
+              </ul>
+              <button type="button" class="btn bio-btn">Shortlist</button>
+            </div>
+    
+    {%endfor%}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+</html>

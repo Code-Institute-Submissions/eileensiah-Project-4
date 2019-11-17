@@ -1,0 +1,223 @@
+{% extends 'base.html'%} 
+{% load static %}
+{% block title %}Online Maid{% endblock %}
+
+
+
+{% block navbar %}
+  <li class="nav-item active">
+    <a class="nav-link" href="{% url 'index' %}"
+    >Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'searchmaid' %}">Search Maid</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'contactus' %}">Enquiry</a>
+  </li>
+{% endblock %}
+
+
+{% block content %}
+<section>
+  <div class="j1">
+      <h1 class= "maids-portal">The No 1 Singapore Maid Portal</h1>
+      <p class= "getStarted">More than 8000 maids for you to choose<br>Start your search now!</br></p>
+          
+      <div class="form-row">
+      <div class = "col"></div>
+      
+      <div class="nationality col-sm-2 px-0">
+        <select id="inputState" class="form-control">
+        <option selected>Nationality</option>
+        <option>Filipino</option>
+        <option>Indonesian</option>
+        <option>Indian</option>
+        <option>Myanmarese</option>
+        <option>Others</option>
+        <option>No Preference</option>
+        </select>
+      </div>
+      <div class="type-of-maid col-sm-2 px-0">
+        <select id="inputState" class="form-control">
+        <option selected>Type of Maid</option>
+        <option>New</option>
+        <option>Transfer</option>
+        <option>Experience</option>
+        <option>No Preference</option>
+        </select>
+      </div>
+      <div class="main-responsibility col-sm-2 px-0">
+        <select id="inputState" class="form-control">
+        <option selected>Main Responsibility</option>
+        <option>Cooking </option>
+        <option>Care for children</option>
+        <option>Care for elderly</option>
+        <option>Care for disabled</option>
+        <option>General housework</option>
+        <option>No Preference</option>
+        </select>
+      </div>
+      <button type="button" class="btn" onclick="window.location.href='searchMaid.html'">Search</button>
+      
+      <div class = "col"></div>
+  </div>
+  </div>
+  </section>
+  
+  <section>
+    <h3 class="section-header">STEPS</h3>
+    <p class="steps-line">Create a shortlisted of potential maids and get the agencies to contact you directly</p>
+    
+    <div class="row steps-container">
+      <div class="col-1"></div>
+      <div class="col-10 card-deck four-steps-container">
+        <div class="card">
+        <div class="card-body steps-box">
+          <h5 class="card-title steps-box-content">STEP 1</h5>
+          <p class="card-text steps-box-content">Browse maids based on your criteria</p>
+          <i class="steps-box-content fa fa-search fa-5x"></i>
+        </div>
+      </div>
+          
+        <div class="card">
+        <div class="card-body steps-box">
+          <h5 class="card-title steps-box-content">STEP 2</h5>
+          <p class="card-text steps-box-content">Add potential hire to your shortlisted list</p>
+          <i class="steps-box-content fa fa-search-plus fa-5x"></i>
+        </div>
+      </div>
+        
+        <div class="card">
+        <div class="card-body steps-box">
+          <h5 class="card-title steps-box-content">STEP 3</h5>
+          <p class="card-text steps-box-content">Send enquries to potential hire agencies</p>
+          <i class="steps-box-content fa fa-envelope fa-5x"></i>
+        </div>
+      </div>
+        
+        <div class="card">
+        <div class="card-body steps-box">
+          <h5 class="card-title steps-box-content">STEP 4</h5>
+          <p class="card-text steps-box-content">Respective agencies will contact you</p>
+          <i class="steps-box-content fa fa-phone-square fa-5x"></i>
+        </div>
+      </div>
+      </div>
+      <div class="col-1"></div>
+    </div> 
+  </section>
+  
+  <section>
+    <h3 class="section-header">PREFERENCE</h3>
+    
+    <div class="card-deck six-choices-1">
+      <div class="card maid-experience">
+        <a href="searchMaid.html">
+          <img class="card-img-top" src="{% static "images/preference/partTime1.jpg" %}" alt="Card image cap">
+          <div class="card-body">
+          <h5 class="card-title">Part Time Maid</h5>
+          <p class="find-out-more">Find out more --></p>
+        </div>
+        </a>
+      </div>
+      
+      <div class="card maid-experience">
+        <a href="searchMaid.html">
+          <img class="card-img-top" src="{% static "images/preference/fullTime1.jpg" %}" alt="Card image cap">
+          <div class="card-body maid-experience">
+            <h5 class="card-title">Full Time Maid</h5>
+            <p class="find-out-more">Find out more --></p>
+          </div>
+        </a>
+      </div>
+      
+      <div class="card maid-experience">
+        <a href="searchMaid.html">
+        <img class="card-img-top" src="{% static "images/preference/confinement.jpg" %}" alt="Card image cap">
+        <div class="card-body maid-experience">
+          <h5 class="card-title">Confinement Nanny</h5>
+          <p class="find-out-more">Find out more --></p>
+        </div>
+        </a>
+      </div>
+    </div>
+    
+    <div class="card-deck six-choices-2">
+      <div class="card maid-experience">  
+        <a href="searchMaid.html">
+        <img class="card-img-top" src="{% static "images/preference/childrenCare1.jpg"%}" alt="Card image cap">
+        <div class="card-body maid-experience">
+          <h5 class="card-title">Care for Infant/ Children</h5>
+          <p class="find-out-more">Find out more --></p>
+        </div>
+        </a>
+      </div>
+      
+      <div class="card maid-experience">
+        <a href="searchMaid.html">
+        <img class="card-img-top" src="{% static "images/preference/elderlyCare1.jpg" %}" alt="Card image cap">
+        <div class="card-body maid-experience">
+          <h5 class="card-title">Care for Elderly/ Disable</h5>
+          <p class="find-out-more">Find out more --></p>
+        </div>
+        </a>
+      </div>
+      
+      <div class="card maid-experience">
+        <a href="searchMaid.html">
+        <img class="card-img-top" src="{% static "images/preference/cooking1.jpg" %}" alt="Card image cap">
+        <div class="card-body maid-experience">
+          <h5 class="card-title">General Housework and Cooking</h5>
+          <p class="find-out-more">Find out more --></p>
+        </div>
+        </a>
+      </div>
+    </div>
+    
+  </section>
+  
+  <section>
+    <div class="container">
+	<div class="row">
+		<div class="col-md-8 col-center m-auto">
+			<h3 class="section-header testimonial">TESTIMONIALS</h3>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Carousel indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>   
+				<!-- testimonial text -->
+				<div class="carousel-inner">
+					<div class="item carousel-item active">
+						<div class="img-box"><img src="{% static "images/testimonial/T1a.jpg" %}" alt=""></div>
+						<p class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante. Idac bibendum scelerisque non non purus. Suspendisse varius nibh non aliquet.</p>
+						<p class="overview"><b>Pauline Yang</b>, Employer</p>
+					</div>
+					<div class="item carousel-item">
+						<div class="img-box"><img src="{% static "images/testimonial/T2a.jpg" %}" alt=""></div>
+						<p class="testimonial">Vestibulum quis quam ut magna consequat faucibus. Pellentesque eget nisi a mi suscipit tincidunt. Utmtc tempus dictum risus. Pellentesque viverra sagittis quam at mattis. Suspendisse potenti. Aliquam sit amet gravida nibh, facilisis gravida odio.</p>
+						<p class="overview"><b>Antonio Moreno</b>, Employer</p>
+					</div>
+					<div class="item carousel-item">
+						<div class="img-box"><img src="{% static "images/testimonial/T3a.jpg" %}" alt=""></div>
+						<p class="testimonial">Phasellus vitae suscipit justo. Mauris pharetra feugiat ante id lacinia. Etiam faucibus mauris id tempor egestas. Duis luctus turpis at accumsan tincidunt. Phasellus risus risus, volutpat vel tellus ac, tincidunt fringilla massa. Etiam hendrerit dolor eget rutrum.</p>
+						<p class="overview"><b>Michelle Stone</b>, Employer</p>
+					</div>
+				</div>
+				<!-- Carousel controls -->
+				<a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+					<i class="fa fa-angle-left"></i>
+				</a>
+				<a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+					<i class="fa fa-angle-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+{% endblock %}
+</html>

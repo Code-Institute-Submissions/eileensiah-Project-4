@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from searchmaid.views import index, searchmaid, contactus, add_searchmaid, edit_searchmaid
 from django.conf.urls.static import static
 from django.conf import settings
+from django.conf.urls import url
 
 
 urlpatterns = [
@@ -26,5 +27,7 @@ urlpatterns = [
     path('searchmaid', searchmaid, name="searchmaid"),
     path('contactus', contactus, name="contactus"),
     path('add_searchmaid', add_searchmaid, name='add_searchmaid'),
-    path('edit_searchmaid/<searchmaid_id>', edit_searchmaid, name='edit_searchmaid')
+    path('edit_searchmaid/<searchmaid_id>', edit_searchmaid, name='edit_searchmaid'),
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls'), name='login'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

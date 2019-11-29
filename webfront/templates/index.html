@@ -7,6 +7,7 @@
 {% block navbar %}
   <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'searchmaid' %}">Search Maid</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'shortlisted' %}">Shortlisted</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'contactus' %}">Enquiry</a></li>
 {% endblock %}
 
@@ -52,7 +53,7 @@
         <option>No Preference</option>
         </select>
       </div>
-      <button type="button" class="btn" onclick="window.location.href='searchMaid.html'">Search</button>
+      <button type="button" class="btn" onclick="location.href='{% url 'searchmaid' %}'">Search</button>
       
       <div class = "col"></div>
   </div>
@@ -107,7 +108,7 @@
     
     <div class="card-deck six-choices-1">
       <div class="card maid-experience">
-        <a href="searchMaid.html">
+        <a href="{% url 'searchmaid' %}">
           <img class="card-img-top" src="{% static "images/preference/partTime1.jpg" %}" alt="Card image cap">
           <div class="card-body">
           <h5 class="card-title">Part Time Maid</h5>
@@ -117,7 +118,7 @@
       </div>
       
       <div class="card maid-experience">
-        <a href="searchMaid.html">
+        <a href="{% url 'searchmaid' %}">
           <img class="card-img-top" src="{% static "images/preference/fullTime1.jpg" %}" alt="Card image cap">
           <div class="card-body maid-experience">
             <h5 class="card-title">Full Time Maid</h5>
@@ -127,7 +128,7 @@
       </div>
       
       <div class="card maid-experience">
-        <a href="searchMaid.html">
+        <a href="{% url 'searchmaid' %}">
         <img class="card-img-top" src="{% static "images/preference/confinement.jpg" %}" alt="Card image cap">
         <div class="card-body maid-experience">
           <h5 class="card-title">Confinement Nanny</h5>
@@ -139,7 +140,7 @@
     
     <div class="card-deck six-choices-2">
       <div class="card maid-experience">  
-        <a href="searchMaid.html">
+        <a href="{% url 'searchmaid' %}">
         <img class="card-img-top" src="{% static "images/preference/childrenCare1.jpg"%}" alt="Card image cap">
         <div class="card-body maid-experience">
           <h5 class="card-title">Care for Infant/ Children</h5>
@@ -149,7 +150,7 @@
       </div>
       
       <div class="card maid-experience">
-        <a href="searchMaid.html">
+        <a href="{% url 'searchmaid' %}">
         <img class="card-img-top" src="{% static "images/preference/elderlyCare1.jpg" %}" alt="Card image cap">
         <div class="card-body maid-experience">
           <h5 class="card-title">Care for Elderly/ Disable</h5>
@@ -159,7 +160,7 @@
       </div>
       
       <div class="card maid-experience">
-        <a href="searchMaid.html">
+        <a href="{% url 'searchmaid' %}">
         <img class="card-img-top" src="{% static "images/preference/cooking1.jpg" %}" alt="Card image cap">
         <div class="card-body maid-experience">
           <h5 class="card-title">General Housework and Cooking</h5>

@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Searchmaid
+from .models import Maid
 
 # Register your models here.
-admin.site.register(Searchmaid)
+admin.site.register(Maid)
+

@@ -7,11 +7,6 @@ from django.db import models
 
 class User(AbstractUser):
     pass
-    agency_name = models.CharField(max_length=100, blank=False, null=True)
-    agency_license = models.CharField(max_length=20, blank=False, null=True)
-    office_no = models.CharField(max_length=20, blank=False, null=True)
-    office_address = models.CharField(max_length=100, blank=False, null=True)
-    handphone_no = models.CharField(max_length=20, blank=False)
     role = models.CharField(
         max_length=50,
         choices = [
@@ -20,6 +15,13 @@ class User(AbstractUser):
             ],
         default="Employer"
         )
+        
+    agency_name = models.CharField(max_length=100, blank=False, null=True)
+    agency_license = models.CharField(max_length=20, blank=False, null=True)
+    office_no = models.CharField(max_length=20, blank=False, null=True)
+    office_address = models.CharField(max_length=100, blank=False, null=True)
+    handphone_no = models.CharField(max_length=20, blank=False)
+    
 
         
         

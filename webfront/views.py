@@ -15,35 +15,6 @@ def searchmaid(request):
     return render(request, "searchmaid.html")
     
 
-# add search maid form   
-# def add_searchmaid(request):
-#     if request.method == "POST":
-#         form = SearchmaidForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect("searchmaid")
-#     else:
-#         form = SearchmaidForm()
-#     return render(request, 'searchmaid_form.html',{
-#              "form":form
-#         })
-
-
-# edit search maid data
-# def edit_searchmaid(request, searchmaid_id):
-#     searchmaid = get_object_or_404(Searchmaid,id=searchmaid_id)
-    
-#     if request.method == "POST":
-#         form = SearchmaidForm(request.POST or None, request.FILES or None, instance=searchmaid)
-#         if form.is_valid():
-#             form.save()
-#         return redirect("searchmaid")
-#     else:
-#         form = SearchmaidForm(instance=searchmaid)
-#         return render(request, 'edit_searchmaid_form.html',{
-#              "form":form
-#         })
-    
 
 def contactus(request):
     return render(request, "contactus.html")  

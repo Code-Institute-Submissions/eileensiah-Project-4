@@ -70,6 +70,7 @@ def register(request):
             'form': register_form
         })
     
+
     
 def account_edit(request, pk):
     user = get_object_or_404(User, pk=pk)
@@ -82,6 +83,8 @@ def account_edit(request, pk):
     else:
         form = UserRegistrationForm(instance=user)
     return render(request, 'account_edit.html', {'form': form})
+
+
 
 def change_password(request):
     if request.method == 'POST':

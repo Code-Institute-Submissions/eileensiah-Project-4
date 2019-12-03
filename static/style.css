@@ -467,6 +467,224 @@
     text-align:center;
 }
 
+
+
+/*Price list css style*/
+/*container background colour*/
+body {
+  background: #F2F2F2;
+  padding: 0;
+  maring: 0;
+}
+
+
+/*overall container*/
+#price {
+  text-align: center;
+  margin-top: 50px;
+}
+
+
+/*individual plan container with margin*/
+.plan {
+  display: inline-block;
+  margin: 10px 1%;
+}
+
+
+/*inner area of each plan*/
+.plan-inner {
+  background: #fff;
+  margin: 0 auto;
+  min-width: 280px;
+  max-width: 100%;
+  position:relative;
+}
+
+
+.plan-title {
+  /*background: #53CFE9;*/
+  height: 140px;
+  position: relative;
+  text-align: center;
+  color: #fff !important;
+  margin-bottom: 30px;
+}
+
+
+.plan-title>h3 {
+  /*background: #20BADA;*/
+  font-size: 20px;
+  padding: 5px 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+  color: #fff
+}
+
+
+.plan-title .price {
+  position: absolute;
+  bottom: -25px;
+  /*background: #20BADA;*/
+  height: 95px;
+  width: 95px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  border-radius: 50px;
+  border: 5px solid #fff;
+  line-height: 80px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff
+}
+
+
+.price span {
+  position: absolute;
+  font-size: 9px;
+  bottom: -10px;
+  left: 30px;
+  font-weight: 400;
+}
+
+
+.plan-content {
+  color: #323232;
+}
+
+
+.plan-content ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+
+.plan-content li {
+  border-bottom: 1px solid #E5E5E5;
+  padding: 10px 0;
+}
+
+
+.plan-content li:last-child {
+  border: none;
+}
+
+
+
+.plan-btn {
+    background-color: #ffff66;
+    color: white;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.plan-btn a{
+    text-decoration: none;
+}
+
+
+.plan-btn:hover{
+    background: orange;
+    color: white;
+    text-decoration: none;
+}
+
+
+.hot {
+    position: absolute;
+    top: -7px;
+    background: #F80;
+    color: #fff;
+    text-transform: uppercase;
+    z-index: 2;
+    padding: 2px 5px;
+    font-size: 9px;
+    border-radius: 2px;
+    right: 10px;
+    font-weight: 700;
+}
+
+
+.basic .plan-title {
+  background: #75DDD9;
+}
+
+
+.basic .plan-title > h3 {
+  background: #44CBC6;
+}
+
+
+.basic .price {
+  background: #44CBC6;
+}
+
+
+.standard .plan-title {
+  background: #4484c1;
+}
+
+
+.standard .plan-title > h3 {
+  background: #3772aa;
+}
+
+
+.standard .price {
+  background: #3772aa;
+}
+
+
+.premium .plan-title > h3 {
+  background: #DD4B5E;
+}
+
+
+.premium .plan-title {
+  background: #F75C70;
+}
+
+
+.premium .price {
+  background: #DD4B5E;
+}
+
+
+/*Registration related form*/
+
+.tablestyle{
+    margin: auto;
+    margin-top: 100px;
+    
+}
+
+.tablestyle tbody tr{
+   height: 50px;
+}
+
+.tablestyle tbody th{
+    width: 250px;
+}
+
+.tablestyle tbody td input{
+    height: 40px;
+    width: 300px;
+}
+
+.signupbtn{
+    margin-left: 100px;
+    height: 40px;
+    width: 100px;
+    background-color: lightblue;
+}
+
     
     
   

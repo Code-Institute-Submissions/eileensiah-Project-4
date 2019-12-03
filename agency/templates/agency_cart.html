@@ -1,0 +1,36 @@
+{% extends 'agency_base.html'%} 
+{% load static %}
+{% block title %}Agency Cart{% endblock %}
+
+
+
+{% block navbar %}
+  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'maid_list' %}">Maid List</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'add_biodata' %}">Add Biodata</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'product' %}">Product</a></li>
+  <li class="nav-item active"><a class="nav-link" href="{% url 'agency_cart' %}">Cart</a></li>
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{%for cart_item in all_cart_items %}
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0">{{cart_item.plan.name}}</h5>
+    <p>
+    {{cart_item.description}}
+    </p>
+    <p>
+        Price: ${{cart_item.plan.price}} <br/>
+        Months: {{cart_item.month }} <br/>
+        <a href="{% url 'remove_from_cart' cart_item_id=cart_item.id %}">Remove</a>
+    </p>
+  </div>
+</div>
+{%endfor%}
+
+{% endblock %}

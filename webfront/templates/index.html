@@ -1,4 +1,4 @@
-{% extends 'base.html'%} 
+{% extends 'webfront_base.html'%} 
 {% load static %}
 {% block title %}Online Maid{% endblock %}
 
@@ -18,12 +18,13 @@
   <div class="j1">
       <h1 class= "maids-portal">The No 1 Singapore Maid Portal</h1>
       <p class= "getStarted">More than 8000 maids for you to choose<br>Start your search now!</br></p>
-          
+      <form method='GET' action='{% url 'searchmaid'%}'>
+   
       <div class="form-row">
       <div class = "col"></div>
       
       <div class="nationality col-sm-2 px-0">
-        <select id="inputState" class="form-control">
+        <select id="inputState" name="nationality" class="form-control">
         <option selected>Nationality</option>
         <option>Filipino</option>
         <option>Indonesian</option>
@@ -34,7 +35,7 @@
         </select>
       </div>
       <div class="type-of-maid col-sm-2 px-0">
-        <select id="inputState" class="form-control">
+        <select id="inputState" name="type_of_maid" class="form-control">
         <option selected>Type of Maid</option>
         <option>New</option>
         <option>Transfer</option>
@@ -43,7 +44,7 @@
         </select>
       </div>
       <div class="main-responsibility col-sm-2 px-0">
-        <select id="inputState" class="form-control">
+        <select id="inputState" name="main_responsibility"  class="form-control">
         <option selected>Main Responsibility</option>
         <option>Cooking </option>
         <option>Care for children</option>
@@ -53,8 +54,8 @@
         <option>No Preference</option>
         </select>
       </div>
-      <button type="button" class="btn" onclick="location.href='{% url 'searchmaid' %}'">Search</button>
-      
+      <button type="submit" class="btn">Search</button>
+      </form>
       <div class = "col"></div>
   </div>
   </div>

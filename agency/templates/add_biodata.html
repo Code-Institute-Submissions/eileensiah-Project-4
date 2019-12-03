@@ -1,0 +1,25 @@
+{% extends 'agency_base.html'%} 
+{% load static %}
+{% block title %}Add Biodata{% endblock %}
+
+
+
+{% block navbar %}
+  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'maid_list' %}">Maid List</a></li>
+  <li class="nav-item active"><a class="nav-link" href="{% url 'add_biodata' %}">Add Biodata</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'product' %}">Product</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'agency_cart' %}">Cart</a></li>
+{% endblock %}
+
+
+
+{% block content %}
+  <h1>Add biodata</h1>
+  <form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="Add biodata"/>
+  </form>
+
+{% endblock %}

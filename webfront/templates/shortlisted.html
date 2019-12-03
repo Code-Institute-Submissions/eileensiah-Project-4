@@ -1,4 +1,4 @@
-{% extends 'base.html'%} 
+{% extends 'webfront_base.html'%} 
 {% load static %}
 {% block title %}Shortlisted{% endblock %}
 
@@ -15,10 +15,58 @@
 
 {% block content %}
 <article class="enquiry-body">
-    <section>
+<section>
   <div class="header-jumbotron">
     <h4 class="header-jumbotron-text">Shortlisted</h4>
   </div>
+</section>
+
+
+
+<section>
+<div class='row'>
+ 		{% for shortlisted_maid in shortlisted_maids %}
+    
+   <div class="card mb-3 ml-3 mr-3" style="width: 15rem">
+              <img src="{{shortlisted_maid.maid.maid_photo.url}}" class="card-img-top" alt="Card image cap">
+              <ul class="list-group list-group-flush card-deck-margin ">
+                <li class="list-group-item name-and-country">
+                  <h5 class="card-title maid-name">{{shortlisted_maid.maid.name}}</h5>
+                  <p class="card-text">{{sm.natonality}}</p>
+                </li>
+                
+                <li class="list-group-item age-marital-status">
+                  <div class="row">
+                    <div class="col">
+                      <p class ="small-label">Age</p>
+                      <p>{{shortlisted_maid.maid.age}} Yrs old</p>
+                    </div>
+                    <div class="col">
+                      <p class= "small-label" >Marital Status</p>
+                      <p>{{shortlisted_maid.maid.marital_status}}</p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="list-group-item maid-type">
+                  <p class ="small-label">Type of maid</p>
+                  <p>{{shortlisted_maid.maid.type_of_maid}}</p>
+                </li>
+                
+                <li class="list-group-item agency-name">
+                  <p class= "small-label">Agency</p>
+                  <p>{{shortlisted_maid.maid.agency_name}}</p>
+                </li>
+              </ul>
+              <div style='text-align:center'>
+                <!--<form method="post" action="{% url 'add_to_shortlisted_cart' pf.id %}">{% csrf_token %}<input type="submit" value="Remove" class="btn bio-btn" /></form>-->
+              	<a href="{% url 'remove_from_shortlisted_cart' shortlisted_cart_id=shortlisted_cart.id %}">Remove</a>
+              </div>
+           
+            </div>
+    {% endfor %}
+ 		
+ 	</div>	
 </section>
 
 <section>
@@ -50,7 +98,7 @@
 						<label for="inputMessage" class="particular">Message</label>
 						<textarea class="form-control" id="inputMessage" rows="5" required></textarea>
 					</div>
-					<input type="submit" class="btn btn-primary" value="Submit">
+					<input type="submit" class="btn btn-bio" value="Submit">
 				</form>
 			</div>
 		</div>

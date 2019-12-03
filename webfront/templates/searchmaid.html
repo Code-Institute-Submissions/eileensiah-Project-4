@@ -1,4 +1,4 @@
-{% extends 'base.html'%} 
+{% extends 'webfront_base.html'%} 
 {% load static %}
 {% block title %}Search Maid{% endblock %}
 
@@ -28,7 +28,7 @@
         <div class="col-md-3 padding-left">
           <h5><b>Filter</b></h5>
           <div class="filter">
-            <select id="inputState" class="form-control filter-dropdown-box">
+            <select id="inputState" name="nationality" class="form-control filter-dropdown-box">
               <option selected>Nationality</option>
               <option>Filipino</option>
               <option>Indonesian</option>
@@ -40,7 +40,7 @@
           </div>
 
           <div class="filter">
-            <select id="inputState" class="form-control filter-dropdown-box">
+            <select id="inputState" name="type_of_maid" class="form-control filter-dropdown-box">
               <option selected>Type of Maid</option>
               <option>New</option>
               <option>Transfer</option>
@@ -50,7 +50,7 @@
           </div>
 
           <div class="filter">
-            <select id="inputState" class="form-control filter-dropdown-box">
+            <select id="inputState"  name="main_responsibility" class="form-control filter-dropdown-box">
               <option selected>Main Responsibility</option>
               <option>Cooking </option>
               <option>Care for children</option>
@@ -62,7 +62,7 @@
           </div>
 
           <div class="filter">
-            <select id="inputState" class="form-control filter-dropdown-box">
+            <select id="inputState" name="language_ability" class="form-control filter-dropdown-box">
               <option selected>Language Ability</option>
               <option>English</option>
               <option>Mandarin/ Chinese Dialect</option>
@@ -74,7 +74,7 @@
           </div>
 
           <div class="filter">
-            <select id="inputState" class="form-control filter-dropdown-box">
+            <select id="inputState" name="marital_status" class="form-control filter-dropdown-box">
               <option selected>Marital Status</option>
               <option>Single</option>
               <option>Married</option>
@@ -85,7 +85,7 @@
           </div>
 
           <div class="filter">
-            <select id="inputState" class="form-control filter-dropdown-box">
+            <select id="inputState" name="age" class="form-control filter-dropdown-box">
               <option selected>Age</option>
               <option>23 to 25</option>
               <option>26 to 30</option>
@@ -98,48 +98,53 @@
         </div>
       
 
-  <div class="col-md-8 maid-bio">
-    <div class="row">
-    {%for sm in searchmaid%}
+      <div class="col-md-8 maid-bio">
+        <div class="row">
+        <!--am i putting it at the right place-->
+        <a class='btn btn-bio mb-3 mt-3' href="{%url 'view_shortlisted_cart' %}">View Cart</a>
+    
+        {%for maid in maids%}
     
         <div class="card mb-3 ml-3 mr-3" style="width: 15rem">
-              <img src="{{sm.maid_photo.url}}" class="card-img-top" alt="Card image cap">
+              <img src="{{maid.maid_photo.url}}" class="card-img-top" alt="Card image cap">
               <ul class="list-group list-group-flush card-deck-margin ">
                 <li class="list-group-item name-and-country">
-                  <h5 class="card-title maid-name">{{sm.name}}</h5>
-                  <p class="card-text">{{sm.natonality}}</p>
+                  <h5 class="card-title maid-name">{{maid.name}}</h5>
+                  <p class="card-text">{{maid.natonality}}</p>
                 </li>
                 
                 <li class="list-group-item age-marital-status">
                   <div class="row">
                     <div class="col">
                       <p class ="small-label">Age</p>
-                      <p>{{sm.age}} Yrs old</p>
+                      <p>{{maid.age}} Yrs old</p>
                     </div>
                     <div class="col">
                       <p class= "small-label" >Marital Status</p>
-                      <p>{{sm.marital_status}}</p>
+                      <p>{{maid.marital_status}}</p>
                     </div>
                   </div>
                 </li>
                 
                 <li class="list-group-item maid-type">
                   <p class ="small-label">Type of maid</p>
-                  <p>{{sm.type_of_maid}}</p>
+                  <p>{{maid.type_of_maid}}</p>
                 </li>
                 
                 <li class="list-group-item agency-name">
                   <p class= "small-label">Agency</p>
-                  <p>{{agency_name}}</p>
+                  <p>{{maid.agency_name}}</p>
                 </li>
               </ul>
-              <button type="button" class="btn bio-btn">Shortlist</button>
+              <a href="{% url 'add_to_shortlisted_cart' maid_id=maid.id %}" <button type="button" class="btn bio-btn">Shortlisted</button></a>
             </div>
     
-    {%endfor%}
-    </div>
-  </div>
-</div>
+        {%endfor%}
+        </div>
+      </div>
+      </div>
+    </section>
+      
 {% endblock %}
 
 

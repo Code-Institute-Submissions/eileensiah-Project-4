@@ -14,64 +14,6 @@ class SignUpView(CreateView):
     template_name = 'signup.html'
 
     
-
-def logout(request):
-    auth.logout(request)
-    messages.success(request, "You have been logged out")
-    return redirect('index')
-
-"""
-This is login function
-"""
-def login(request):
-    if request.method == "POST":
-        # populate the login form with the user's input
-        login_form = UserLoginForm(request.POST)
-        
-        # if the input to the login form is valid
-        if login_form.is_valid():
-            # use auth.authenticate to check if the
-            # user name and password matches
-            user = auth.authenticate(username=request.POST['username'],
-                                     password=request.POST['password'])
-            #if there is a user (meaning, user is not None)
-            if user:
-                auth.login(user=user, request=request)
-                return redirect(reverse('index'))
-    else:
-        form = UserLoginForm()
-        return render(request, 'login.html', {
-            'form':form
-        })
-        
-        
-def register(request):
-    if request.method == "POST":
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            # check if the username and password matches
-            user = auth.authenticate(username=request.POST['username'],
-                                     password=request.POST['password1'])
-            if user:
-                # actually log the user in
-                auth.login(user=user, request=request)
-                messages.success(request, "You have registered successful")
-            else:
-                messages.error(request, "You failed to register")
-            return redirect(reverse('index'))
-        else:
-            return render(request, "signup.html",{
-                'form': form
-            })
-    else:
-        register_form = UserRegistrationForm()
-        return render(request, "signup.html", {
-            'form': register_form
-        })
-    
-
-    
 def account_edit(request, pk):
     user = get_object_or_404(User, pk=pk)
     if request.method == "POST":

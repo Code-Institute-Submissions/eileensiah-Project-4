@@ -1,0 +1,20 @@
+{% extends 'agency_base.html'%} 
+{% load static %}
+{% block title %}Edit  Biodata{% endblock %}
+
+
+
+{% block content %}
+<body>
+    <h1>Edit Biodata</h1>
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Edit biodata"/>
+    </form>
+</body>
+{%endblock%}
+
+
+
+</html>

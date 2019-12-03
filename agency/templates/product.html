@@ -1,0 +1,92 @@
+{% extends 'agency_base.html'%} 
+{% load static %}
+{% block title %}Plan{% endblock %}
+
+
+
+{% block navbar %}
+  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'maid_list' %}">Maid List</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'add_biodata' %}">Add Biodata</a></li>
+  <li class="nav-item active"><a class="nav-link" href="{% url 'product' %}">Product</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'agency_cart' %}">Cart</a></li>
+{% endblock %}
+
+
+
+{% block content %}
+<body>
+
+<div id="price">
+  <div class="plan basic">
+    <div class="plan-inner">
+     
+      <div class="plan-title">
+        <h3>Basic/ Mth</h3>
+        <div class="price">$200</div>
+      </div>
+      <div class="plan-content">
+        <ul>
+          <li>List up to 100 biodata</li>
+          <li>Get Unlimited enquiry</li>
+          <li>Agency website with chatbox</li>
+          <li>All forms in soft copy</li>
+          <li> - </li>
+          <li> - </li>
+        </ul>
+      </div>
+      <div class="plan-btn">
+        <a href="{% url 'add_to_cart' 1 %}">SIGN UP</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="plan standard">
+    <div class="plan-inner">
+      <div class="hot">Best Value</div>
+      <div class="plan-title">
+        <h3>Standard/ Mth</h3>
+        <div class="price">$260</div>
+      </div>
+      <div class="plan-content">
+        <ul>
+          <li>List up to 100 biodata</li>
+          <li>Advertise in Featured Maid</li>
+          <li>Get Unlimited enquiry</li>
+          <li>Agency website with chatbox</li>
+          <li>All forms in soft copy</li>
+          <li> - </li>
+          
+        </ul>
+      </div>
+      <div class="plan-btn">
+        <a href="{% url 'add_to_cart' 2 %}">SIGN UP</a>
+      </div>
+    </div>
+  </div>
+   
+  <div class="plan premium">
+    <div class="plan-inner">
+      <div class="plan-title">
+        <h3>Premium/ Mth</h3>
+        <div class="price">$500</div>
+      </div>
+      <div class="plan-content">
+        <ul>
+          <li>List up to 100 biodata</li>
+          <li>Advertise in Featured Maid</li>
+          <li><strong>Agency Advertisemet banner</strong></li>
+          <li>Get Unlimited enquiry</li>
+          <li>Agency website with chatbox</li>
+          <li>All forms in soft copy</li>
+        </ul>
+      </div>
+      <div class="plan-btn">
+        <a href="{% url 'add_to_cart' 3 %}">SIGN UP</a>
+      </div>
+    </div>
+  </div>
+</div>  
+
+</body>
+{% endblock %}

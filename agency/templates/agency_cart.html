@@ -17,20 +17,75 @@
 
 {% block content %}
 
-{%for cart_item in all_cart_items %}
-<div class="media">
-  <div class="media-body">
-    <h5 class="mt-0">{{cart_item.plan.name}}</h5>
-    <p>
-    {{cart_item.description}}
-    </p>
-    <p>
-        Price: ${{cart_item.plan.price}} <br/>
-        Months: {{cart_item.month }} <br/>
-        <a href="{% url 'remove_from_cart' cart_item_id=cart_item.id %}">Remove</a>
-    </p>
+<div class="px-4 px-lg-0">
+  <div class="container text-white py-5 text-center">
+    <h1 class="display-4">Shopping cart</h1>
+  </div>
+  
+  <div class="pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+           <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="p-2 px-3 text-uppercase">Type of Plan</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Price</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Month</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Total</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase">Remove</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {%for cart_item in all_cart_items %}
+                <tr>
+                  <th scope="row" class="border-0">
+                    <div class="p-2">
+                    <div class="ml-3 d-inline-block align-middle">
+                        <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">{{cart_item.plan.name}}</a></h5>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="border-0 align-middle"><strong>{{cart_item.plan.price}}</strong></td>
+                  <td class="border-0 align-middle"><a href="{% url 'minus_month' cart_item_id=cart_item.id %}">-</a><strong>{{cart_item.month }}</strong><a href="{% url 'add_month' cart_item_id=cart_item.id %}">+</a></td>
+                  <td class="border-0 align-middle"><strong>{{cart_item.total_cost  }}</strong></td>
+                  <td class="border-0 align-middle"><a href="{% url 'remove_from_cart' cart_item_id=cart_item.id %}" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                </tr>
+                {%endfor%}
+              </tbody>
+            </table>
+          </div>
+          <!-- End -->
+        </div>
+      </div>
+      
+      <div class="row py-5 p-4 bg-white rounded shadow-sm">
+        <div class="col-lg-8">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary </div>
+          <div class="p-4">
+            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+            <ul class="list-unstyled mb-4">
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>{{total_price}}</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>{{value}}</strong></li>
+              <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong><h5 class="font-weight-bold">{{total_price}}</h5></li>
+            </ul><a href="{% url 'payment' %}" class="btn btn-dark rounded-pill py-2 btn-block">Payment</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
-{%endfor%}
 
 {% endblock %}

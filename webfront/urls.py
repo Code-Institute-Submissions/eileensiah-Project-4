@@ -3,7 +3,7 @@
 
 from django.urls import path
 from django.conf.urls import url
-from .views import index, searchmaid, contactus, shortlisted
+from .views import index, searchmaid, contactus, shortlisted,home
 
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path('searchmaid', searchmaid, name="searchmaid"),
     path('shortlisted', shortlisted, name="shortlisted"),
     path('contactus', contactus, name="contactus"),
+    path('home', home, name="home"),
 ]

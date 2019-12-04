@@ -27,7 +27,6 @@ class Employer(models.Model):
     name = models.CharField(max_length=50, blank=False, null=True)
     handphone_no = models.CharField(max_length=20, blank=False)
     
-
         
         
 

@@ -12,7 +12,7 @@ def calculate_cart_cost(request):
     all_cart_items = CartItem.objects.filter(owner=request.user)
     amount = 0
     for cart_item in all_cart_items:
-        amount += cart_item.product.cost * cart_item.month
+        amount += cart_item.plan.price * cart_item.month
         
     return amount
 
@@ -23,8 +23,8 @@ def payment(request):
     total_cost = calculate_cart_cost(request)
    
         
-    return render(request, 'payment.template.html', {
-        'total_cost':total_cost/100
+    return render(request, 'payment.html', {
+        'total_cost':total_cost
     })
  
  
@@ -35,7 +35,7 @@ def charge(request):
     if request.method == 'GET':
         order_form = OrderForm()
         payment_form = PaymentForm()
-        return render(request, 'charge.template.html', {
+        return render(request, 'charge.html', {
             'order_form' : order_form,
             'payment_form' : payment_form,
             'amount' : amount,
@@ -49,6 +49,12 @@ def charge(request):
         
         order_form = OrderForm(request.POST)
         payment_form = PaymentForm(request.POST)
+        
+        if not order_form.is_valid():
+            print("orderform")
+            
+        if not payment_form.is_valid():
+            print("payment_form")
         
         if order_form.is_valid() and payment_form.is_valid():
             try:
@@ -65,21 +71,24 @@ def charge(request):
                     order.date=timezone.now()
                     order.save()
                     
-                    return render(request, 'thankyou.template.html')
+                    return render(request, 'thankyou.html')
                 else:
+                    print("Your card has been declined")
                     messages.error(request, "Your card has been declined")
             except stripe.error.CardError:
+                    print("Your card was declined!")
                     messages.error(request, "Your card was declined!")
             
         else:
-             return render(request, 'charge.template.html', {
+            print("???")
+            return render(request, 'charge.html', {
             'order_form' : order_form,
             'payment_form' : payment_form,
             'amount' : amount,
             'publishable': settings.STRIPE_PUBLISHABLE_KEY
         })
         
-        return render(request, 'charge.template.html', {
+        return render(request, 'charge.html', {
             'order_form' : order_form,
             'payment_form' : payment_form,
             'amount' : amount,

@@ -28,7 +28,28 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       {% block navbar %}{% endblock %}
+      <!--</div>-->
     </ul>
+    <ul class="nav pull-right">
+      {% if user.is_authenticated %}
+        <!--{% if user.role == "Employer" %}-->
+        <!--<li class="nav-item">-->
+        <!--  <a class="nav-link" href="{% url 'enquiry' %}">Agency Home</a>-->
+        <!--</li>-->
+        <!--{% endif %}-->
+         <li>
+          <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+        </li>
+        {% else %}
+         <li>
+          <a class="nav-link" href="{% url 'login' %}">Employer Log In</a>
+        </li>
+         <li>
+          <a class="nav-link" href="{% url 'employer_signup' %}">Employer Sign Up</a>
+        </li>
+        {% endif %}
+    </ul>
+    
   </div>
 </nav>
 </header>
@@ -91,6 +112,11 @@
       <div class="col-md-3 mb-md-0 mb-3">
         <ul class="list-unstyled">
           {% if user.is_authenticated %}
+          {% if user.role == "Agency" %}
+          <li>
+            <a href="{% url 'enquiry' %}">Agency Home</a>
+          </li>
+          {% endif %}
           <li>
             <a href="{% url 'logout' %}">Log Out</a>
           </li>
@@ -99,9 +125,8 @@
             <a href="{% url 'login' %}">Agency Log In</a>
           </li>
           <li>
-            <a href="{% url 'user_register' %}">Agency Sign Up</a>
+            <a href="{% url 'agency_signup' %}">Agency Sign Up</a>
           </li>
-          
           {% endif %}
         </ul>
       </div>

@@ -36,3 +36,13 @@ class CartItem(models.Model):
     
     def __str__(self):
         return self.plan.name + " x " + str(self.month)
+        
+    @property
+    def total_cost(self):
+        return self.month * self.plan.price
+        
+    def add_month(self):
+        self.month += 1
+        
+    def minus_month(self):
+        self.month -= 1

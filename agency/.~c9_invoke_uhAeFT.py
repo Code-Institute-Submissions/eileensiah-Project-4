@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from product_cart.models import CartItem
-from django.db.models import Sum
+from django.db.models import Avg, Count, Min, Sum
 
 
 # Create your views here.
@@ -13,13 +13,9 @@ def add_biodata(request):
 def agency_cart(request):
     # reminder: request.user is the currently logged in user
     all_cart_items = CartItem.objects.filter(owner=request.user)
-    total_price = 0
-    for item in all_cart_items:
-        total_price += item.month*item.plan.price
-
+    
     return render(request, 'agency_cart.html',{
-        'all_cart_items':all_cart_items,
-        'total_price': total_price
+        'all_cart_items':all_cart_items
     }) 
     
     

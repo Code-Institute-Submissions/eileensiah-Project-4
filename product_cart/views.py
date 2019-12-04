@@ -37,5 +37,21 @@ def remove_from_cart(request, cart_item_id):
 
     existing_cart_item = CartItem.objects.get(pk=cart_item_id)
     existing_cart_item.delete()
-    return redirect(reverse('product'))
+    return redirect(reverse('agency_cart'))
     
+def add_month(request, cart_item_id):
+
+    existing_cart_item = CartItem.objects.get(pk=cart_item_id)
+    print (existing_cart_item.month)
+    existing_cart_item.add_month()
+    existing_cart_item.save()
+    print (existing_cart_item.month)
+    return redirect(reverse('agency_cart'))
+    
+def minus_month(request, cart_item_id):
+
+    existing_cart_item = CartItem.objects.get(pk=cart_item_id)
+    print (existing_cart_item.month)
+    existing_cart_item.minus_month()
+    existing_cart_item.save()
+    return redirect(reverse('agency_cart'))

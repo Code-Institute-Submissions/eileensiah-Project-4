@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
+from django.db import transaction
 
 # our own user model
-from .models import User
+from .models import User, Agency, Employer
         
 
 
@@ -51,11 +52,54 @@ class UserRegistrationForm(UserCreationForm):
         
     class Meta:
         model = User
-        fields = ['role','username', 'agency_name','email', 'agency_license', 'office_no', 'handphone_no', 'office_address', 'password1', 'password2']
-       
-       
+        fields = ['role','username', 'email', 'password1', 'password2']
        
 
+class AgencySignUpForm(UserCreationForm):
+    email = forms.CharField()
+    agency_name = forms.CharField()
+    agency_license = forms.CharField()
+    office_no = forms.CharField()
+    handphone_no = forms.CharField()
+    office_address = forms.CharField()
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        
+
+    @transaction.atomic
+    def save(self):
+        user = super().save(commit=False)
+        user.choices = "Agency"
+        user.email = self.cleaned_data.get('email')
+        user.save()
+        agency = Agency.objects.create(user=user)
+        agency.agency_name = self.cleaned_data.get('agency_name')
+        agency.agency_license = self.cleaned_data.get('agency_license')
+        agency.office_no = self.cleaned_data.get('office_no')
+        agency.handphone_no = self.cleaned_data.get('handphone_no')
+        agency.office_address = self.cleaned_data.get('office_address')
+        return user
+
+class EmployerSignUpForm(UserCreationForm):
+    email = forms.CharField()
+    name = forms.CharField()
+    handphone_no = forms.CharField()
+
+    class Meta(UserCreationForm.Meta):
+        model = User
+        
+
+    @transaction.atomic
+    def save(self):
+        user = super().save(commit=False)
+        user.choices = "Employer"
+        user.email = self.cleaned_data.get('email')
+        user.save()
+        employer = Employer.objects.create(user=user)
+        employer.agency_name = self.cleaned_data.get('name')
+        employer.handphone_no = self.cleaned_data.get('handphone_no')
+        return user
   
        
        

@@ -132,3 +132,9 @@ EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'index'
+
+STRIPE_SECRET_KEY = 'sk_test_yXaKJyVGmVsaXTRhdTD3IWCZ00nswSdGsZ'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_FDphzPFmFJWC96YbkK5mTb2J00Yo7DEwgV'

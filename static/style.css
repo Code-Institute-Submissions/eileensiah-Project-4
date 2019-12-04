@@ -685,7 +685,19 @@ body {
     background-color: lightblue;
 }
 
-    
-    
+.nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.nav li {
+    display: inline-block;
+    font-size: 15px;
+}
+
+.pull-right {
+    float: right;
+}
+
   
 

@@ -32,11 +32,11 @@
     </ul>
     <ul class="nav pull-right">
       {% if user.is_authenticated %}
-        <!--{% if user.role == "Employer" %}-->
+        {% if user.role == "Employer" %}
         <!--<li class="nav-item">-->
-        <!--  <a class="nav-link" href="{% url 'enquiry' %}">Agency Home</a>-->
+        <!--  <a class='btn btn-bio mb-3 mt-3' href="{%url 'view_shortlisted_cart' %}">View Cart</a>-->
         <!--</li>-->
-        <!--{% endif %}-->
+        {% endif %}
          <li>
           <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
         </li>
@@ -84,7 +84,7 @@
     <div class="row d-flex justify-content-around">
       
       <div class=" footer-left col-md-3 mt-md-0 mt-3">
-        <p class="footer-content">Reach us @ +65 8200 6162</p>
+        <p class="footer-content">Reach us @ +65 8200 0000</p>
         <p class= "footer-content">sales@onlinemaid.com.sg</p>
         
         <!-- social -->
@@ -141,6 +141,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+{%block footer_js %}
+{%endblock%}
 </body>
 </html>

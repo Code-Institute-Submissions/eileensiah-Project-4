@@ -20,6 +20,20 @@
 
 {%block content %}
 <form role="form" method="POST" id="payment-form">
+    {% if payment_form.errors %}
+    {% for field in payment_form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in payment_form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
     <legend>Payment Details</legend>
 
 

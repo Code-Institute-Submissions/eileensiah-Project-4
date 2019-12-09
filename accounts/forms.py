@@ -70,7 +70,7 @@ class AgencySignUpForm(UserCreationForm):
     @transaction.atomic
     def save(self):
         user = super().save(commit=False)
-        user.choices = "Agency"
+        user.role = "Agency"
         user.email = self.cleaned_data.get('email')
         user.save()
         agency = Agency.objects.create(user=user)
@@ -79,6 +79,7 @@ class AgencySignUpForm(UserCreationForm):
         agency.office_no = self.cleaned_data.get('office_no')
         agency.handphone_no = self.cleaned_data.get('handphone_no')
         agency.office_address = self.cleaned_data.get('office_address')
+        agency.save()
         return user
 
 class EmployerSignUpForm(UserCreationForm):
@@ -93,12 +94,13 @@ class EmployerSignUpForm(UserCreationForm):
     @transaction.atomic
     def save(self):
         user = super().save(commit=False)
-        user.choices = "Employer"
+        user.role = "Employer"
         user.email = self.cleaned_data.get('email')
         user.save()
         employer = Employer.objects.create(user=user)
-        employer.agency_name = self.cleaned_data.get('name')
+        employer.name = self.cleaned_data.get('name')
         employer.handphone_no = self.cleaned_data.get('handphone_no')
+        employer.save()
         return user
   
        

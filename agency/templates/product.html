@@ -2,12 +2,14 @@
 {% load static %}
 {% block title %}Plan{% endblock %}
 
-
+{% block link %}
+  <link rel="stylesheet" href="{% static "agency/subscription_plan.css" %}" type="text/css" />
+{% endblock %}
 
 {% block navbar %}
-  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">General Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'shortlist_enquiry' %}">Shortlisted Enquiry</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'maid_list' %}">Maid List</a></li>
-  <li class="nav-item"><a class="nav-link" href="{% url 'add_biodata' %}">Add Biodata</a></li>
   <li class="nav-item active"><a class="nav-link" href="{% url 'product' %}">Product</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'agency_cart' %}">Cart</a></li>
 {% endblock %}
@@ -17,7 +19,18 @@
 {% block content %}
 <body>
 
-<div id="price">
+<div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6"><h2><b>Subscription Plan</b></h2></div>
+					     </div>
+            </div>
+            
+           
+            <div id="price">
+
+  <!--price tab-->
   <div class="plan basic">
     <div class="plan-inner">
      
@@ -36,11 +49,14 @@
         </ul>
       </div>
       <div class="plan-btn">
-        <a href="{% url 'add_to_cart' 1 %}">SIGN UP</a>
+        <a href="#">SIGN UP</a>
       </div>
     </div>
   </div>
+  <!-- end of price tab-->
   
+  
+  <!--price tab-->
   <div class="plan standard">
     <div class="plan-inner">
       <div class="hot">Best Value</div>
@@ -60,11 +76,14 @@
         </ul>
       </div>
       <div class="plan-btn">
-        <a href="{% url 'add_to_cart' 2 %}">SIGN UP</a>
+        <a href="#">SIGN UP</a>
       </div>
     </div>
   </div>
+   <!--end of price tab-->
    
+   
+  <!--price tab-->
   <div class="plan premium">
     <div class="plan-inner">
       <div class="plan-title">
@@ -82,11 +101,14 @@
         </ul>
       </div>
       <div class="plan-btn">
-        <a href="{% url 'add_to_cart' 3 %}">SIGN UP</a>
+        <a href="#">SIGN UP</a>
       </div>
     </div>
   </div>
+   <!--end of price tab-->
 </div>  
+        </div>
+	</div> 
 
 </body>
 {% endblock %}

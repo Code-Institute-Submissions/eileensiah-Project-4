@@ -2,19 +2,197 @@
 {% load static %}
 {% block title %}Edit  Biodata{% endblock %}
 
-
+{% block link %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "agency/agency_maid_list.css" %}" type="text/css" />
+{% endblock %}
 
 {% block content %}
-<body>
-    <h1>Edit Biodata</h1>
-    <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Edit biodata"/>
-    </form>
-</body>
+<div id="editBiodataModal">
+	<div style="float:left ; padding-left: 50px;" >
+		<img src="{{maid.maid_photo.url}}" alt="Maid Photo" height="500px" style="clear: both ;">
+	</div>
+		<div class="modal-dialog-edit media-padding">
+			<div class="modal-content">
+				<form id=editmaid action="" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="modal-header">						
+						<h4 class="modal-title">Edit Biodata</h4>
+					</div>
+					<div class="modal-body">					
+						<div class="form-group">
+							<label for="agency_name">Agency Name</label>
+							<input type="text" class="form-control" required name="agency_name" id="id_agency_name" value={{ maid.agency_name }}>
+						</div>
+						
+						<div class="form-group">
+							<label for="name">Maid Name</label>
+							<input type="text" class="form-control" required name="name" id="id_name" value={{ maid.agency_name }}>
+						</div>
+						
+						<div class="form-group">
+							<label for="nationality">Nationality</label>
+							<select class="form-control dropdown-box" name="nationality" id="id_nationality">
+								<option>No Preference</option>
+								<option>Filipino</option>
+            		            <option>Indonesian</option>
+            		            <option>Indian</option>
+            		            <option>Myanmarese</option>
+            		            <option>Others</option>
+							</select>
+						</div>
+					
+						<div class="form-group">
+							<label for="type_of_maid">Type of Maid</label>
+            				<select class="form-control dropdown-box" name="type_of_maid" id="id_type_of_maid">
+              				<option>No Preference</option>
+              				<option>New</option>
+              				<option>Transfer</option>
+              				<option>Experience</option>
+            				</select>
+          				</div>
+          				
+          				<div class="form-group">
+							<label for="language_ability">Language Ability</label>
+            				<select class="form-control dropdown-box" name="language_ability" id="id_language_ability">
+              				<option>No Preference</option>
+              				<option>English</option>
+			              	<option>Mandarin/ Chinese Dialect</option>
+			              	<option>Bahasa indonesia</option>
+			              	<option>Hindi/ Tamil</option>
+			              	<option>Burmese</option>
+            				</select>
+          				</div>
+          				
+          				<div class="form-group">
+							<label for="main_responsibility">Main Responsibility</label>
+            				<select class="form-control dropdown-box" name="main_responsibility" id="id_main_responsibility">
+              				<option>No Preference</option>
+              				<option>Cooking</option>
+			              	<option>Care for children</option>
+			              	<option>Care for elderly</option>
+			              	<option>Care for disabled</option>
+			              	<option>General housework</option>
+            				</select>
+          				</div>
+          				
+						<div class="form-group">
+							<label for="salary">Salary (excude off day)</label>
+							<input type="number" class="form-control" required name="salary" id="id_salary" value={{ maid.salary }}>
+						</div>
+						
+						<div class="form-group">
+							<label for="date_of_birth">Date of Birth</label>
+							<input type="date" class="form-control" required name="date_of_birth" id="id_date_of_birth" value="{{maid.date_of_birth|date:"Y-m-d" }}">
+						</div>
+						
+						<div class="form-group">
+							<label for="age">Age</label>
+            				<select class="form-control dropdown-box" name="age" id="id_age">
+              				<option>No Preference</option>
+              				<option>23 to 25</option>
+				            <option>26 to 30</option>
+				            <option>31 t0 35</option>
+				            <option>36 to 40</option>
+				            <option>41 to 50</option>
+				            </select>
+          				</div>
+          				
+						<div class="form-group">
+							<label for="religion">Religion</label>
+							<select class="form-control dropdown-box" name="religion" id="id_religion">
+              				<option>None</option>
+				            <option>Buddhist</option>
+				            <option>Muslim</option>
+				            <option>Hindu</option>
+				            <option>Christian/ Catholic</option>
+				            <option>Others</option>
+				            </select>
+						</div>
+						
+						<div class="form-group">
+							<label for="marital_status">Marital Status</label>
+            				<select class="form-control dropdown-box" name="marital_status" id="id_marital_status">
+              				<option>Single</option>
+              				<option>Married</option>
+              				<option>Widowed</option>
+              				<option>Divorced/ Tamil</option>
+            				</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="no_of_children">Number of Children</label>
+							<select class="form-control dropdown-box" name="no_of_children" id="id_no_of_children">
+              				<option>None</option>
+              				<option>1</option>
+              				<option>2</option>
+              				<option>3</option>
+              				<option>more than 3</option>
+            				</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="education_level">Education Level</label>
+							<select class="form-control dropdown-box" name="education_level" id="id_education_level">
+              				<option>High School</option>
+              				<option>College</option>
+              				<option>Degree</option>
+              				<option>Others</option>
+            				</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="employment_history">Employment History</label>
+							<textarea class="form-control" required name="employment_history" id="id_employment_history">{{ maid.employment_history }}</textarea>
+						</div>
+		
+						
+						<div class="form-group">
+							<label for="maid_photo">Maid Photo: <a href="{{maid.maid_photo.url}}">{{maid.maid_photo.url}}</a></label>
+							<input type="file" name="maid_photo" accept="image/*" id="id_maid_photo">
+							<label for="fileupload"> Select a file to upload</label>
+						</div>
+						
+						
+
+					</div>
+					<div class="modal-footer">
+						<a href="{% url 'maid_list' %}"><input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"></a>
+						<input type="submit" class="btn btn-success" value="Save">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{% static "agency/agency_maid_list.js" %}"></script>
+  <script>
+  	$(function() {
+	    var nationality="{{ maid.nationality }}"; 
+	    $("#id_nationality").val(nationality);
+	    var type_of_maid="{{ maid.type_of_maid }}"; 
+	    $("#id_type_of_maid").val(type_of_maid);
+	    var main_responsibility="{{ maid.main_responsibility }}"; 
+	    console.log(main_responsibility)
+	    $("#id_main_responsibility").val(main_responsibility);
+	    var language_ability="{{ maid.language_ability }}"; 
+	    $("#id_language_ability").val(language_ability);
+	    var age="{{ maid.age }}"; 
+	    $("#id_age").val(age);
+	    var marital_status="{{ maid.marital_status }}"; 
+	    $("#id_marital_status").val(marital_status);
+	    var religion="{{ maid.religion }}"; 
+	    $("#id_religion").val(religion);
+	    var no_of_children="{{ maid.no_of_children }}"; 
+	    $("#id_no_of_children").val(no_of_children);
+	    var education_level="{{ maid.education_level }}"; 
+	    $("#id_education_level").val(education_level);
+	});
+
+  </script>
 {%endblock%}
-
-
-
-</html>

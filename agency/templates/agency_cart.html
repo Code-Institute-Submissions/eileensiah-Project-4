@@ -5,9 +5,9 @@
 
 
 {% block navbar %}
-  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">General Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'shortlist_enquiry' %}">Shortlisted Enquiry</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'maid_list' %}">Maid List</a></li>
-  <li class="nav-item"><a class="nav-link" href="{% url 'add_biodata' %}">Add Biodata</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'product' %}">Product</a></li>
   <li class="nav-item active"><a class="nav-link" href="{% url 'agency_cart' %}">Cart</a></li>
 {% endblock %}
@@ -18,7 +18,7 @@
 {% block content %}
 
 <div class="px-4 px-lg-0">
-  <div class="container text-white py-5 text-center">
+  <div class="container text-blue py-5 text-center">
     <h1 class="display-4">Shopping cart</h1>
   </div>
   
@@ -79,7 +79,7 @@
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>{{total_price}}</strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>{{value}}</strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong><h5 class="font-weight-bold">{{total_price}}</h5></li>
-            </ul><a href="{% url 'payment' %}" class="btn btn-dark rounded-pill py-2 btn-block">Payment</a>
+            </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Payment</a>
           </div>
         </div>
       </div>

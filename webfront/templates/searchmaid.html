@@ -24,8 +24,8 @@
     <section>
       <div class="row bio-container">
         <!--<div class="col-md-1"></div>-->
-        
         <div class="col-md-3 padding-left">
+          <form method='GET' action='{% url 'searchmaid'%}'>
           <h5><b>Filter</b></h5>
           <div class="filter">
             <select id="inputState" name="nationality" class="form-control filter-dropdown-box">
@@ -95,22 +95,23 @@
               <option>No Preference</option>
             </select>
           </div>
+          <button type="submit" class="btn">Search</button>
+        </form>
         </div>
-      
+        
 
       <div class="col-md-8 maid-bio">
         <div class="row">
         <!--am i putting it at the right place-->
-        <a class='btn btn-bio mb-3 mt-3' href="{%url 'view_shortlisted_cart' %}">View Cart</a>
-    
-        {%for maid in maids%}
+
+        {%for maid in searchmaid %}
     
         <div class="card mb-3 ml-3 mr-3" style="width: 15rem">
               <img src="{{maid.maid_photo.url}}" class="card-img-top" alt="Card image cap">
               <ul class="list-group list-group-flush card-deck-margin ">
                 <li class="list-group-item name-and-country">
                   <h5 class="card-title maid-name">{{maid.name}}</h5>
-                  <p class="card-text">{{maid.natonality}}</p>
+                  <p class="card-text">{{maid.nationality}}</p>
                 </li>
                 
                 <li class="list-group-item age-marital-status">
@@ -136,7 +137,11 @@
                   <p>{{maid.agency_name}}</p>
                 </li>
               </ul>
+              {% if user.is_authenticated %}
               <a href="{% url 'add_to_shortlisted_cart' maid_id=maid.id %}" <button type="button" class="btn bio-btn">Shortlisted</button></a>
+              {% else %}
+              <a href="{% url 'login' %}" <button type="button" class="btn bio-btn">Shortlisted</button></a>
+              {% endif %}
             </div>
     
         {%endfor%}
@@ -144,7 +149,7 @@
       </div>
       </div>
     </section>
-      
+</article>   
 {% endblock %}
 
 

@@ -43,24 +43,18 @@ def charge(request):
         })
     else:
         stripeToken = request.POST['stripe_id']
-        
+        print(stripeToken)
         # set the secret key for the Stripe API
         stripe.api_key = settings.STRIPE_SECRET_KEY
         
         order_form = OrderForm(request.POST)
         payment_form = PaymentForm(request.POST)
         
-        if not order_form.is_valid():
-            print("orderform")
-            
-        if not payment_form.is_valid():
-            print("payment_form")
-        
         if order_form.is_valid() and payment_form.is_valid():
             try:
                 customer = stripe.Charge.create(
                     amount= int(request.POST['amount'])*100,
-                    currency='S$',
+                    currency='SGD',
                     description='Product',
                     card=stripeToken
                     )
@@ -80,17 +74,15 @@ def charge(request):
                     messages.error(request, "Your card was declined!")
             
         else:
-            print("???")
             return render(request, 'charge.html', {
             'order_form' : order_form,
             'payment_form' : payment_form,
             'amount' : amount,
             'publishable': settings.STRIPE_PUBLISHABLE_KEY
         })
-        
         return render(request, 'charge.html', {
-            'order_form' : order_form,
-            'payment_form' : payment_form,
-            'amount' : amount,
-            'publishable': settings.STRIPE_PUBLISHABLE_KEY
-            })
+        'order_form' : order_form,
+        'payment_form' : payment_form,
+        'amount' : amount,
+        'publishable': settings.STRIPE_PUBLISHABLE_KEY
+        })

@@ -16,7 +16,7 @@ def view_shortlisted_cart(request):
 def add_to_shortlisted_cart(request, maid_id):
     
     # determine which maid we have shortlisted
-    maid = Maid.objects.get(md=maid_id)
+    maid = Maid.objects.get(id=maid_id)
     
     # if the maid already exists in the user's shortlisted cart
     existing_shortlisted_maid = ShortlistedMaid.objects.filter(owner=request.user, maid=maid).first()
@@ -36,8 +36,8 @@ def add_to_shortlisted_cart(request, maid_id):
    
    
     
-def remove_from_shortlisted_cart(request, shortlisted_maid_id):
+def remove_from_shortlisted_cart(request, shortlisted_cart_item_id):
 
-    existing_shortlisted_maid = ShortlistedMaid.objects.get(md=shortlisted_maid_id)
+    existing_shortlisted_maid = ShortlistedMaid.objects.get(id=shortlisted_cart_item_id)
     existing_shortlisted_maid.delete()
     return redirect(reverse('searchmaid'))

@@ -1,13 +1,20 @@
 {% extends 'agency_base.html'%} 
 {% load static %}
-{% block title %}Maid List{% endblock %}
+{% block title %}Agency Maid List{% endblock %}
 
+{% block link %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "agency/agency_maid_list.css" %}" type="text/css" />
+{% endblock %}
 
 
 {% block navbar %}
-  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'enquiry' %}">General Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'shortlist_enquiry' %}">Shortlisted Enquiry</a></li>
   <li class="nav-item active"><a class="nav-link" href="{% url 'maid_list' %}">Maid List</a></li>
-  <li class="nav-item"><a class="nav-link" href="{% url 'add_biodata' %}">Add Biodata</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'product' %}">Product</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'agency_cart' %}">Cart</a></li>
 {% endblock %}
@@ -15,6 +22,408 @@
 
 
 {% block content %}
+  
+  <div class="container">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+	          <h2><b style= "color: white !important;">Agency Maid List</b></h2>
+    			</div>
+    			<div class="col-sm-6">
+    				<a href="#addBiodataModal" class="btn btn-success" data-toggle="modal" ><i class="material-icons" style= "color: white !important;">&#xE147;</i> <span style= "color: white !important;">Add New Biodata</span></a>
+    				<a href="#deleteBiodataModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons"style= "color: white !important;">&#xE15C;</i> <span style= "color: white !important;">Delete</span></a>						
+    			</div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+		        <th>
+			        <span class="custom-checkbox">
+				        <input type="checkbox" id="selectAll">
+				        <label for="selectAll"></label>
+			        </span>
+		        </th>
+            <th>Maid Name</th>
+            <th>Nationality</th>
+		        <th>Type of Maid</th>
+            <th>Created On</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        	{% for maid in all_maid %}
+        	<tr>
+            <td>
+  						<span class="custom-checkbox">
+  							<input type="checkbox" id="checkbox{{ forloop.counter }}" name="options[]" value="{{ forloop.counter }}">
+  							<label for="checkbox{{ forloop.counter }}"></label>
+  						</span>
+  					</td>
+            <td>{{ maid.name }}</td>
+            <td>{{ maid.nationality }}</td>
+  		  		<td>{{ maid.type_of_maid }}</td>
+            <td>{{ maid.created_on }}</td>
+            <td>
+                <a href="{% url 'edit_biodata' maid.pk %}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a href="{% url 'delete_biodata' maid.pk %}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+            </td>
+          </tr>
+        	{% endfor %}
+        </tbody>
+      </table>
+      <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+          <li class="page-item disabled"><a href="#">Previous</a></li>
+          <li class="page-item"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item active"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Modal HTML -->
+	<div id="addBiodataModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id=addmaid action="" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<div class="modal-header">						
+						<h4 class="modal-title">Add Biodata</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<div class="form-group">
+							<label for="agency_name">Agency Name</label>
+							<input type="text" class="form-control" required name="agency_name" id="id_agency_name">
+						</div>
+						
+						<div class="form-group">
+							<label for="name">Maid Name</label>
+							<input type="text" class="form-control" required name="name" id="id_name">
+						</div>
+						
+						<div class="form-group">
+							<label for="nationality">Nationality</label>
+							<select class="form-control dropdown-box" name="nationality" id="id_nationality">
+								<option >No Preference</option>
+								<option>Filipino</option>
+		            <option>Indonesian</option>
+		            <option>Indian</option>
+		            <option>Myanmarese</option>
+		            <option>Others</option>
+							</select>
+						</div>
+					
+						<div class="form-group">
+							<label for="type_of_maid">Type of Maid</label>
+            				<select class="form-control dropdown-box" name="type_of_maid" id="id_type_of_maid">
+              				<option>No Preference</option>
+              				<option>New</option>
+              				<option>Transfer</option>
+              				<option>Experience</option>
+            				</select>
+          				</div>
+          				
+          				<div class="form-group">
+							<label for="language_ability">Language Ability</label>
+            				<select class="form-control dropdown-box" name="language_ability" id="id_language_ability">
+              				<option>No Preference</option>
+              				<option>English</option>
+			              	<option>Mandarin/ Chinese Dialect</option>
+			              	<option>Bahasa indonesia</option>
+			              	<option>Hindi/ Tamil</option>
+			              	<option>Burmese</option>
+            				</select>
+          				</div>
+          				
+          				<div class="form-group">
+							<label for="main_responsibility">Main Responsibility</label>
+            				<select class="form-control dropdown-box" name="main_responsibility" id="id_main_responsibility">
+              				<option>No Preference</option>
+              				<option>Cooking</option>
+			              	<option>Care for children</option>
+			              	<option>Care for elderly</option>
+			              	<option>Care for disabled</option>
+			              	<option>General housework</option>
+            				</select>
+          				</div>
+          				
+						<div class="form-group">
+							<label for="salary">Salary (excude off day)</label>
+							<input type="number" class="form-control" required name="salary" id="id_salary">
+						</div>
+						
+						<div class="form-group">
+							<label for="date_of_birth">Date of Birth</label>
+							<input type="date" class="form-control" required name="date_of_birth" id="id_date_of_birth" value="{{maid.date_of_birth|date:"Y-m-d" }}">
+						</div>
+						
+						<div class="form-group">
+							<label for="age">Age</label>
+            				<select class="form-control dropdown-box" name="age" id="id_age">
+              				<option>No Preference</option>
+              				<option>23 to 25</option>
+				            <option>26 to 30</option>
+				            <option>31 t0 35</option>
+				            <option>36 to 40</option>
+				            <option>41 to 50</option>
+				            </select>
+          				</div>
+          				
+						<div class="form-group">
+							<label for="religion">Religion</label>
+							<select class="form-control dropdown-box" name="religion" id="id_religion">
+              				<option>None</option>
+				            <option>Buddhist</option>
+				            <option>Muslim</option>
+				            <option>Hindu</option>
+				            <option>Christian/ Catholic</option>
+				            <option>Others</option>
+				            </select>
+						</div>
+						
+						<div class="form-group">
+							<label for="marital_status">Marital Status</label>
+            				<select class="form-control dropdown-box" name="marital_status" id="id_marital_status">
+              				<option>Single</option>
+              				<option>Married</option>
+              				<option>Widowed</option>
+              				<option>Divorced/ Tamil</option>
+            				</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="no_of_children">Number of Children</label>
+							<select class="form-control dropdown-box" name="no_of_children" id="id_no_of_children">
+              				<option>None</option>
+              				<option>1</option>
+              				<option>2</option>
+              				<option>3</option>
+              				<option>more than 3</option>
+            				</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="education_level">Education Level</label>
+							<select class="form-control dropdown-box" name="education_level" id="id_education_level">
+              				<option>High School</option>
+              				<option>College</option>
+              				<option>Degree</option>
+              				<option>Others</option>
+            				</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="employment_history">Employment History</label>
+							<textarea class="form-control" required name="employment_history" id="id_employment_history"></textarea>
+						</div>
+		
+						
+						<div class="form-group">
+							<label for="maid_photo">Maid Photo</label>
+							<input type="file" name="maid_photo" accept="image/*" id="id_maid_photo">
+							<label for="fileupload"> Select a file to upload</label>
+						</div>
+						
+						
 
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-success" value="Add">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Edit Modal HTML -->
+	<!--<div id="editBiodataModal" class="modal fade">-->
+	<!--	<div class="modal-dialog">-->
+	<!--		<div class="modal-content">-->
+	<!--			<form id=editmaid action="" method="POST" enctype="multipart/form-data">-->
+	<!--				{% csrf_token %}-->
+	<!--				<div class="modal-header">						-->
+	<!--					<h4 class="modal-title">Edit Biodata</h4>-->
+	<!--					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+	<!--				</div>-->
+	<!--				<div class="modal-body">					-->
+	<!--					<div class="form-group">-->
+	<!--						<label>Agency Name</label>-->
+	<!--						<input type="text" class="form-control" required>-->
+	<!--					</div>-->
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Maid Name</label>-->
+	<!--						<input type="text" class="form-control" required>-->
+	<!--					</div>-->
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Nationality</label>-->
+	<!--						<select id="inputState" class="form-control dropdown-box">-->
+	<!--						<option>No Preference</option>-->
+	<!--						<option>Filipino</option>-->
+	<!--			            <option>Indonesian</option>-->
+	<!--			            <option>Indian</option>-->
+	<!--			            <option>Myanmarese</option>-->
+	<!--			            <option>Others</option>-->
+	<!--						</select>-->
+	<!--					</div>-->
+					
+	<!--					<div class="form-group">-->
+	<!--						<label>Type of Maid</label>-->
+ <!--           				<select id="inputState" class="form-control dropdown-box">-->
+ <!--             				<option>No Preference</option>-->
+ <!--             				<option>New</option>-->
+ <!--             				<option>Transfer</option>-->
+ <!--             				<option>Experience</option>-->
+ <!--           				</select>-->
+ <!--         				</div>-->
+          				
+ <!--         				<div class="form-group">-->
+	<!--						<label>Language Ability</label>-->
+ <!--           				<select id="inputState" class="form-control dropdown-box">-->
+ <!--             				<option>No Preference</option>-->
+ <!--             				<option>English</option>-->
+	<!--		              	<option>Mandarin/ Chinese Dialect</option>-->
+	<!--		              	<option>Bahasa indonesia</option>-->
+	<!--		              	<option>Hindi/ Tamil</option>-->
+	<!--		              	<option>Burmese</option>-->
+ <!--           				</select>-->
+ <!--         				</div>-->
+          				
+ <!--         				<div class="form-group">-->
+	<!--						<label>Job Preference</label>-->
+ <!--           				<select id="inputState" class="form-control dropdown-box">-->
+ <!--             				<option>No Preference</option>-->
+ <!--             				<option>Cooking </option>-->
+	<!--		              	<option>Care for children</option>-->
+	<!--		              	<option>Care for elderly</option>-->
+	<!--		              	<option>Care for disabled</option>-->
+	<!--		              	<option>General housework</option>-->
+ <!--           				</select>-->
+ <!--         				</div>-->
+          				
+	<!--					<div class="form-group">-->
+	<!--						<label>Salary (excude off day)</label>-->
+	<!--						<input type="number" class="form-control" required>-->
+	<!--					</div>-->
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Date of Birth</label>-->
+	<!--						<input type="date" class="form-control" required>-->
+	<!--					</div>-->
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Age</label>-->
+ <!--           				<select id="inputState" class="form-control dropdown-box">-->
+ <!--             				<option>No Preference</option>-->
+ <!--             				<option>23 to 25</option>-->
+	<!--			            <option>26 to 30</option>-->
+	<!--			            <option>31 t0 35</option>-->
+	<!--			            <option>36 to 40</option>-->
+	<!--			            <option>41 to 50</option>-->
+	<!--			            </select>-->
+ <!--         				</div>-->
+          				
+	<!--					<div class="form-group">-->
+	<!--						<label>Religion</label>-->
+	<!--						<select id="inputState" class="form-control dropdown-box">-->
+ <!--             				<option>None</option>-->
+	<!--			            <option>Buddhist</option>-->
+	<!--			            <option>Muslim</option>-->
+	<!--			            <option>Hindu</option>-->
+	<!--			            <option>Christian/ Catholic</option>-->
+	<!--			            <option>Others</option>-->
+	<!--			            </select>-->
+	<!--					</div>-->
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Marital Status</label>-->
+ <!--           				<select id="inputState" class="form-control dropdown-box">-->
+ <!--             				<option>Single</option>-->
+ <!--             				<option>Married</option>-->
+ <!--             				<option>Widowed</option>-->
+ <!--             				<option>Divorced/ Tamil</option>-->
+ <!--           				</select>-->
+	<!--					</div>-->
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Number of Children</label>-->
+	<!--						<select id="inputState" class="form-control dropdown-box">-->
+ <!--             				<option>None</option>-->
+ <!--             				<option>1</option>-->
+ <!--             				<option>2</option>-->
+ <!--             				<option>3</option>-->
+ <!--             				<option>more than 3</option>-->
+ <!--           				</select>-->
+	<!--					</div>-->
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Education Level</label>-->
+	<!--						<select id="inputState" class="form-control dropdown-box">-->
+ <!--             				<option>High School</option>-->
+ <!--             				<option>College</option>-->
+ <!--             				<option>Degree</option>-->
+ <!--             				<option>Others</option>-->
+ <!--           				</select>-->
+	<!--					</div>-->
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Employment History</label>-->
+	<!--						<textarea class="form-control" required></textarea>-->
+	<!--					</div>-->
+		
+						
+	<!--					<div class="form-group">-->
+	<!--						<label>Maid Photo</label>-->
+	<!--						<input type="file" name="fileupload" value="fileupload" id="fileupload"> -->
+	<!--						<label for="fileupload"> Select a file to upload</label>-->
+	<!--					</div>-->
+						
+						
+
+	<!--				</div>-->
+	<!--				<div class="modal-footer">-->
+	<!--					<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">-->
+	<!--					<input type="submit" class="btn btn-info" value="Save">-->
+	<!--				</div>-->
+	<!--			</form>-->
+	<!--		</div>-->
+	<!--	</div>-->
+	<!--</div>-->
+	<!-- Delete Modal HTML -->
+	<div id="deleteBiodataModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form>
+					<div class="modal-header">						
+						<h4 class="modal-title">Delete Biodata</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<p>Are you sure you want to delete these Records?</p>
+						<p class="text-warning"><small>This action cannot be undone.</small></p>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-danger" value="Delete">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{% static "agency/agency_maid_list.js" %}"></script>
 
 {% endblock %}

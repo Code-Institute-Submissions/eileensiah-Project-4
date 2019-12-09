@@ -13,6 +13,9 @@ class User(AbstractUser):
             ],
         default="Employer"
         )
+        
+    def __str__(self):
+        return self.username
     
 class Agency(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
@@ -22,12 +25,16 @@ class Agency(models.Model):
     office_address = models.CharField(max_length=100, blank=False, null=True)
     handphone_no = models.CharField(max_length=20, blank=False)
     
+    def __str__(self):
+        return self.user.username
+    
 class Employer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     name = models.CharField(max_length=50, blank=False, null=True)
     handphone_no = models.CharField(max_length=20, blank=False)
     
-        
+    def __str__(self):
+        return self.user.username + " " + self.name
         
 
 

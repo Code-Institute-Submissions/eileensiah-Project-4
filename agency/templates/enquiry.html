@@ -1,13 +1,20 @@
 {% extends 'agency_base.html'%} 
 {% load static %}
-{% block title %}Enquiry{% endblock %}
+{% block title %}Agency General Enquiry{% endblock %}
 
+{% block link %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static "agency/agency_general_enquiry.css" %}" type="text/css" />
+{% endblock %}
 
 
 {% block navbar %}
-  <li class="nav-item active"><a class="nav-link" href="{% url 'enquiry' %}">Enquiry</a></li>
+  <li class="nav-item active"><a class="nav-link" href="{% url 'enquiry' %}">General Enquiry</a></li>
+  <li class="nav-item"><a class="nav-link" href="{% url 'shortlist_enquiry' %}">Shortlisted Enquiry</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'maid_list' %}">Maid List</a></li>
-  <li class="nav-item"><a class="nav-link" href="{% url 'add_biodata' %}">Add Biodata</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'product' %}">Product</a></li>
   <li class="nav-item"><a class="nav-link" href="{% url 'agency_cart' %}">Cart</a></li>
 {% endblock %}
@@ -15,6 +22,96 @@
 
 
 {% block content %}
+  <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2><b style= "color: white !important;">Agency General Enquiry</b></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#deleteBiodataModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons" style= "color: white !important;">&#xE15C;</i> <span style= "color: white !important;">Delete</span></a>
+                    </div>
+                </div>
+            </div>
 
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                <input type="checkbox" id="selectAll">
+                <label for="selectAll"></label>
+              </span>
+                        </th>
+                        <th>Employer Name</th>
+                        <th>Email</th>
+                        <th>Phone No</th>
+                        <th>Maid
+                            <br>Nationality</th>
+                        <th>Maid
+                            <br> Responsibility</th>
+                        <th>Enquiry Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for enquiry in enquirys %}
+                    <tr>
+                        <td>
+                            <span class="custom-checkbox">
+                <input type="checkbox" id="checkbox{{forloop.counter}}" name="options[]" value="{{forloop.counter}}">
+                <label for="checkbox{{forloop.counter}}"></label>
+              </span>
+                        </td>
+                        <td>{{enquiry.name}}</td>
+                        <td>{{enquiry.email}}</td>
+                        <td>{{enquiry.phonenumber}}</td>
+                        <td>{{enquiry.nationality}}</td>
+                        <td>{{enquiry.main_responsibility}}</td>
+                        <td>{{enquiry.enquiry_date|date:'d/m/y'}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteBiodataModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Biodata</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete these Records?</p>
+                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="{% static "agency/agency_general_enquiry.js" %}"></script>
 
 {% endblock %}

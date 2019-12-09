@@ -59,8 +59,7 @@
                 </li>
               </ul>
               <div style='text-align:center'>
-                <!--<form method="post" action="{% url 'add_to_shortlisted_cart' pf.id %}">{% csrf_token %}<input type="submit" value="Remove" class="btn bio-btn" /></form>-->
-              	<a href="{% url 'remove_from_shortlisted_cart' shortlisted_cart_id=shortlisted_cart.id %}">Remove</a>
+              	<a href="{% url 'remove_from_shortlisted_cart' shortlisted_cart_item_id=shortlisted_maid.id %}">Remove</a>
               </div>
            
             </div>
@@ -76,27 +75,71 @@
 			<div class="contact-form">
 				<h3 class="section-header">SHORTLISTED LIST</h3>
 				<p class="hint-text">Thanks for your enquiry. We shall revert soon.</p>
+				<form method="POST">
+				{% csrf_token %}
+				{% if user.is_authenticated %}
+					{% if user.role == "Employer" %}
 					<div class="row">
 						<div class="col-sm-6">
 							<div class="form-group">
-								<label for="inputFirstName" class="particular">First Name</label>
-								<input type="text" class="form-control" id="inputFirstName" required>
+								<label for="inputFirstName" class="particular">Name</label>
+								<input type="text" class="form-control" name="inputFirstName" required value="{{ employer.name }}">
 							</div>
 						</div>
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label for="inputLastName" class="particular">Phone Number</label>
-								<input type="text" class="form-control" id="inputLastName" required>
+								<input type="text" class="form-control" name="inputLastName" required value="{{ employer.handphone_no }}">
 							</div>
 						</div>
 					</div>            
 					<div class="form-group">
 						<label for="inputEmail" class="particular">Email Address</label>
-						<input type="email" class="form-control" id="inputEmail" required>
+						<input type="email" class="form-control" name="inputEmail" required value="{{ user.email }}">
 					</div>
+					{% else %}
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="inputFirstName" class="particular">Name</label>
+								<input type="text" class="form-control" name="inputFirstName" required>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="inputLastName" class="particular">Phone Number</label>
+								<input type="text" class="form-control" name="inputLastName" required>
+							</div>
+						</div>
+					</div>            
+					<div class="form-group">
+						<label for="inputEmail" class="particular">Email Address</label>
+						<input type="email" class="form-control" name="inputEmail" required>
+					</div>
+					{% endif %}
+					{% else %}
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="inputFirstName" class="particular">Name</label>
+								<input type="text" class="form-control" name="input_name" required>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="inputLastName" class="particular">Phone Number</label>
+								<input type="text" class="form-control" name="input_phonenumber" required>
+							</div>
+						</div>
+					</div>            
+					<div class="form-group">
+						<label for="inputEmail" class="particular">Email Address</label>
+						<input type="email" class="form-control" name="input_email" required>
+					</div>
+				{% endif %}
 					<div class="form-group">
 						<label for="inputMessage" class="particular">Message</label>
-						<textarea class="form-control" id="inputMessage" rows="5" required></textarea>
+						<textarea class="form-control" name="input_message" rows="5" required></textarea>
 					</div>
 					<input type="submit" class="btn btn-bio" value="Submit">
 				</form>

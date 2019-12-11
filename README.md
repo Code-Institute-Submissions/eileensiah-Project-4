@@ -98,8 +98,8 @@ c) Agency Admin
     * General enquiry page - For general enquiry, employers do not have any prefered FDWs in mind. Therefore, agencies have to recommend FDWs based on emplyoyer requirements.
     * Shortlisted enquiry page - Employers have selected their prefered maid and agencies need to revert back to employers on their selection.
     * Maid List page - It showed all the FDWs that belongs to this agency. In the page, agency is also able create, read, edit and delete any biodata.
-    * Product page - It showed the subscrib
-
+    * Product page - This page showed the subscription plan for agency to subscribe in order to use this platform.
+    * Cart - Is for payment for the subscription plan.
 
 
 

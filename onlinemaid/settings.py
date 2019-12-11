@@ -14,7 +14,7 @@ SECRET_KEY = 'k99+osw&+@(j(8^eyxw(3_g@xjm=ej&2i($ca97^jadp)tl$bz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','project-4-maid-platform-django.herokuapp.com']
 
 
 # Application definition

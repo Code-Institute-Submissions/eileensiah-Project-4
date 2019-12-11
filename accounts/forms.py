@@ -82,6 +82,7 @@ class AgencySignUpForm(UserCreationForm):
         agency.save()
         return user
 
+
 class EmployerSignUpForm(UserCreationForm):
     email = forms.CharField()
     name = forms.CharField()

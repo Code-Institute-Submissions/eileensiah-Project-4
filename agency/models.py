@@ -132,7 +132,7 @@ class Maid(models.Model):
     
     
     def __str__(self):
-        return self.name
+        return self.name + "\t"+ self.nationality + "\t" + self.main_responsibility + "\t" + self.type_of_maid
         
 
 class Enquiry(models.Model):

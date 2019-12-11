@@ -26,7 +26,8 @@ class Agency(models.Model):
     handphone_no = models.CharField(max_length=20, blank=False)
     
     def __str__(self):
-        return self.user.username
+        return self.agency_name
+ 
     
 class Employer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

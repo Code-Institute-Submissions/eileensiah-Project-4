@@ -43,7 +43,6 @@ def charge(request):
         })
     else:
         stripeToken = request.POST['stripe_id']
-        print(stripeToken)
         # set the secret key for the Stripe API
         stripe.api_key = settings.STRIPE_SECRET_KEY
         

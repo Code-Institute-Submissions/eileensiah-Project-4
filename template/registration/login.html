@@ -5,9 +5,13 @@
   <div style="text-align: center; margin-top: 100px;">
   <form method="POST">
   {% csrf_token %}
-  {{ form.as_p }}
-  <input type='submit' value='Log In'/>
+  <table class="tablestyle">
+  {{ form.as_table }}
+  </table>
+  <br>
+  <input type='submit' value='Log In' class='signupbtn'/>
   </form>
-  <p>Forgot Password?&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'password_reset' %}">Reset Password</a></p>
+  <br>
+  <a href="{% url 'password_reset' %}">Forget Password</a>
   </div>
 {% endblock %}

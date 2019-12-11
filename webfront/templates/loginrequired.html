@@ -1,0 +1,12 @@
+{% extends 'webfront_base.html'%} 
+{% load static %}
+{% block title %}Login Required{% endblock %}
+
+{% block content %}
+<div style="text-align:center;" >
+    <h5>To view your shortlisted cart, you need to sign up as user</h5>
+    <a href={% url 'login' %}><button class="btn">Log In</button></a>
+    <a href="{% url 'employer_signup' %}"><button class="btn">Sign up</button></a>
+</div>
+
+{% endblock %}

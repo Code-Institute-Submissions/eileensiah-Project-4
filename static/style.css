@@ -219,13 +219,36 @@
     color: white;
     padding: 0px 20px;
     min-height: 38px;
-    margin: 0px 30px 30px;
+    margin: 0px 50px 30px;
     font-weight: 600
 }
 
+
+.filter-btn{
+    background: orange;
+    color: white;
+    padding: 0px 70px;
+    min-height: 40px;
+    font-weight: 600
+}
+
+
+.shortlisted-btn{
+    background: orange;
+    color: white;
+    padding: 0px 70px;
+    min-height: 40px;
+    font-weight: 600;
+    margin: 10px 20px;
+}
+
+
+
 .contact-form .btn-primary:hover,
 .enquiry-btn:hover,
-.bio-btn:hover{
+.filter-btn:hover,
+.bio-btn:hover,
+.signupbtn:hover{
     background: #1d93e2;
     color: white;
     border: none;
@@ -661,7 +684,6 @@ body {
 
 .tablestyle{
     margin: auto;
-    margin-top: 100px;
     
 }
 
@@ -679,11 +701,14 @@ body {
 }
 
 .signupbtn{
-    margin-left: 100px;
+    margin: auto;
+    display: block;
     height: 40px;
-    width: 100px;
-    background-color: lightblue;
+    width: 150px;
+    background-color: orange;
+    color:white;
 }
+
 
 .nav {
     list-style-type: none;

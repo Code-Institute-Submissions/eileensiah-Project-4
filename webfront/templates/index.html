@@ -25,7 +25,7 @@
       
       <div class="nationality col-sm-2 px-0">
         <select id="inputState" name="nationality" class="form-control">
-        <option selected>Nationality</option>
+        <option selected value="none">Nationality</option>
         <option>Filipino</option>
         <option>Indonesian</option>
         <option>Indian</option>
@@ -36,7 +36,7 @@
       </div>
       <div class="type-of-maid col-sm-2 px-0">
         <select id="inputState" name="type_of_maid" class="form-control">
-        <option selected>Type of Maid</option>
+        <option selected value="none">Type of Maid</option>
         <option>New</option>
         <option>Transfer</option>
         <option>Experience</option>
@@ -45,12 +45,12 @@
       </div>
       <div class="main-responsibility col-sm-2 px-0">
         <select id="inputState" name="main_responsibility"  class="form-control">
-        <option selected>Main Responsibility</option>
+        <option selected value="none">Main Responsibility</option>
         <option>Cooking </option>
-        <option>Care for children</option>
-        <option>Care for elderly</option>
-        <option>Care for disabled</option>
-        <option>General housework</option>
+        <option>Care for Children</option>
+        <option>Care for Elderly</option>
+        <option>Care for Disabled</option>
+        <option>General Housework</option>
         <option>No Preference</option>
         </select>
       </div>
@@ -61,7 +61,7 @@
   </div>
   </section>
   
-  <section>
+  <section  style="color:#737373;">
     <h3 class="section-header">STEPS</h3>
     <p class="steps-line">Create a shortlisted of potential maids and get the agencies to contact you directly</p>
     
@@ -105,39 +105,7 @@
   </section>
   
   <section>
-    <h3 class="section-header">PREFERENCE</h3>
-    
-    <div class="card-deck six-choices-1">
-      <div class="card maid-experience">
-        <a href="{% url 'searchmaid' %}">
-          <img class="card-img-top" src="{% static "images/preference/partTime1.jpg" %}" alt="Card image cap">
-          <div class="card-body">
-          <h5 class="card-title">Part Time Maid</h5>
-          <p class="find-out-more">Find out more --></p>
-        </div>
-        </a>
-      </div>
-      
-      <div class="card maid-experience">
-        <a href="{% url 'searchmaid' %}">
-          <img class="card-img-top" src="{% static "images/preference/fullTime1.jpg" %}" alt="Card image cap">
-          <div class="card-body maid-experience">
-            <h5 class="card-title">Full Time Maid</h5>
-            <p class="find-out-more">Find out more --></p>
-          </div>
-        </a>
-      </div>
-      
-      <div class="card maid-experience">
-        <a href="{% url 'searchmaid' %}">
-        <img class="card-img-top" src="{% static "images/preference/confinement.jpg" %}" alt="Card image cap">
-        <div class="card-body maid-experience">
-          <h5 class="card-title">Confinement Nanny</h5>
-          <p class="find-out-more">Find out more --></p>
-        </div>
-        </a>
-      </div>
-    </div>
+    <h3 class="section-header" style="color:#737373;">PREFERENCE</h3>
     
     <div class="card-deck six-choices-2">
       <div class="card maid-experience">  
@@ -171,10 +139,41 @@
       </div>
     </div>
     
+    <div class="card-deck six-choices-1">
+      <div class="card maid-experience">
+        <a href="{% url 'searchmaid' %}">
+          <img class="card-img-top" src="{% static "images/preference/partTime1.jpg" %}" alt="Card image cap">
+          <div class="card-body">
+          <h5 class="card-title">Part Time Maid</h5>
+          <p class="find-out-more">Find out more --></p>
+        </div>
+        </a>
+      </div>
+      
+      <div class="card maid-experience">
+        <a href="{% url 'searchmaid' %}">
+          <img class="card-img-top" src="{% static "images/preference/fullTime1.jpg" %}" alt="Card image cap">
+          <div class="card-body maid-experience">
+            <h5 class="card-title">Full Time Maid</h5>
+            <p class="find-out-more">Find out more --></p>
+          </div>
+        </a>
+      </div>
+      
+      <div class="card maid-experience">
+        <a href="{% url 'searchmaid' %}">
+        <img class="card-img-top" src="{% static "images/preference/confinement.jpg" %}" alt="Card image cap">
+        <div class="card-body maid-experience">
+          <h5 class="card-title">Confinement Nanny</h5>
+          <p class="find-out-more">Find out more --></p>
+        </div>
+        </a>
+      </div>
+    </div>
   </section>
   
   <section>
-    <div class="container">
+    <div class="container"  style="color:#737373; margin-top:120px;>
 	<div class="row">
 		<div class="col-md-8 col-center m-auto">
 			<h3 class="section-header testimonial">TESTIMONIALS</h3>

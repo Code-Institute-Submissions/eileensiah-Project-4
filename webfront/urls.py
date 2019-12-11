@@ -3,7 +3,7 @@
 
 from django.urls import path
 from django.conf.urls import url
-from .views import index, searchmaid, contactus, shortlisted,home
+from .views import index, searchmaid, contactus, shortlisted,home, login_required
 
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('shortlisted', shortlisted, name="shortlisted"),
     path('contactus', contactus, name="contactus"),
     path('home', home, name="home"),
+    path('login_required', login_required, name="login_required"),
 ]

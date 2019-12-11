@@ -79,7 +79,7 @@
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>{{total_price}}</strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>{{value}}</strong></li>
               <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong><h5 class="font-weight-bold">{{total_price}}</h5></li>
-            </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Payment</a>
+            </ul><a href="{% url 'charge' %}" class="btn btn-dark rounded-pill py-2 btn-block">Payment</a>
           </div>
         </div>
       </div>

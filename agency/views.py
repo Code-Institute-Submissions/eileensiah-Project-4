@@ -20,6 +20,7 @@ def add_biodata(request):
 @agency_required
 def agency_cart(request):
     # reminder: request.user is the currently logged in user
+    agency = Agency.objects.get(user=request.user)
     all_cart_items = CartItem.objects.filter(owner=request.user)
     total_price = 0
     for item in all_cart_items:
@@ -27,16 +28,19 @@ def agency_cart(request):
 
     return render(request, 'agency_cart.html',{
         'all_cart_items':all_cart_items,
-        'total_price': total_price
+        'total_price': total_price,
+        'agency': agency
     }) 
     
 @login_required
 @agency_required
 def enquiry(request):
-    enquirys = list(Enquiry.objects.all())
-    enquirys.reverse()
+    agency = Agency.objects.get(user=request.user)
+    enquiry = list(Enquiry.objects.all())
+    enquiry.reverse()
     return render(request, "enquiry.html", {
-        'enquirys': enquirys
+        'enquiry': enquiry,
+        'agency': agency
     }) 
     
 @login_required
@@ -46,7 +50,8 @@ def shortlist_enquiry(request):
     shortlists = list(Shortlist.objects.filter(agency=agency.agency_name))
     shortlists.reverse()
     return render(request, "enquiry_shortlist.html", {
-        'shortlists': shortlists
+        'shortlists': shortlists,
+        'agency': agency
     }) 
     
 @login_required
@@ -76,13 +81,14 @@ def maid_list(request):
     all_maid= Maid.objects.filter(agency_name=agency_user.agency_name)
     context = {
         'all_maid': all_maid,
-        # 'addmaidform': addmaidform
+        'agency': agency
     }
     return render(request, "maid_list.html", context)
     
 @login_required
 @agency_required
 def edit_biodata(request, maid_id):
+    agency = Agency.objects.get(user=request.user)
     maid = Maid.objects.get(id=maid_id)
     if request.method == 'POST':
         maid.name= request.POST.get('name')
@@ -105,6 +111,7 @@ def edit_biodata(request, maid_id):
         return redirect("maid_list")
     context = {
         'maid': maid,
+        'agency': agency
     }
     return render(request, "edit_biodata.html", context)
 
@@ -118,4 +125,7 @@ def delete_biodata(request, maid_id):
 @login_required
 @agency_required
 def product(request):
-    return render(request, "product.html")
+    agency = Agency.objects.get(user=request.user)
+    return render(request, "product.html", {
+        'agency': agency
+    })

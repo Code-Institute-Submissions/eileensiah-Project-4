@@ -22,80 +22,80 @@
     </section>
 
     <section>
-      <div class="row bio-container">
+      <div class="row bio-container" style="color:#737373;">
         <!--<div class="col-md-1"></div>-->
         <div class="col-md-3 padding-left">
           <form method='GET' action='{% url 'searchmaid'%}'>
           <h5><b>Filter</b></h5>
           <div class="filter">
             <select id="inputState" name="nationality" class="form-control filter-dropdown-box">
-              <option selected>Nationality</option>
+              <option selected value="none">Nationality</option>
               <option>Filipino</option>
               <option>Indonesian</option>
               <option>Indian</option>
               <option>Myanmarese</option>
               <option>Others</option>
-              <option>No Preference</option>
+              <option value="none">No Preference</option>
             </select>
           </div>
 
           <div class="filter">
             <select id="inputState" name="type_of_maid" class="form-control filter-dropdown-box">
-              <option selected>Type of Maid</option>
+              <option selected value="none">Type of Maid</option>
               <option>New</option>
               <option>Transfer</option>
               <option>Experience</option>
-              <option>No Preference</option>
+              <option value="none">No Preference</option>
             </select>
           </div>
 
           <div class="filter">
             <select id="inputState"  name="main_responsibility" class="form-control filter-dropdown-box">
-              <option selected>Main Responsibility</option>
+              <option selected value="none">Main Responsibility</option>
               <option>Cooking </option>
-              <option>Care for children</option>
-              <option>Care for elderly</option>
-              <option>Care for disabled</option>
-              <option>General housework</option>
-              <option>No Preference</option>
+              <option>Care for Children</option>
+              <option>Care for Elderly</option>
+              <option>Care for Disabled</option>
+              <option>General Housework</option>
+              <option value="none">No Preference</option>
             </select>
           </div>
 
           <div class="filter">
             <select id="inputState" name="language_ability" class="form-control filter-dropdown-box">
-              <option selected>Language Ability</option>
+              <option selected value="none">Language Ability</option>
               <option>English</option>
               <option>Mandarin/ Chinese Dialect</option>
               <option>Bahasa indonesia</option>
               <option>Hindi/ Tamil</option>
               <option>Burmese</option>
-              <option>No Preference</option>
+              <option value="none">No Preference</option>
             </select>
           </div>
 
           <div class="filter">
             <select id="inputState" name="marital_status" class="form-control filter-dropdown-box">
-              <option selected>Marital Status</option>
+              <option selected value="none">Marital Status</option>
               <option>Single</option>
               <option>Married</option>
               <option>Widowed</option>
               <option>Divorced/ Tamil</option>
-              <option>No Preference</option>
+              <option value="none">No Preference</option>
             </select>
           </div>
 
           <div class="filter">
             <select id="inputState" name="age" class="form-control filter-dropdown-box">
-              <option selected>Age</option>
+              <option selected value="none">Age</option>
               <option>23 to 25</option>
               <option>26 to 30</option>
-              <option>31 t0 35</option>
+              <option>31 to 35</option>
               <option>36 to 40</option>
               <option>41 to 50</option>
-              <option>No Preference</option>
+              <option value="none">No Preference</option>
             </select>
           </div>
-          <button type="submit" class="btn">Search</button>
+          <button type="submit" class="filter-btn">Search</button>
         </form>
         </div>
         
@@ -137,10 +137,12 @@
                   <p>{{maid.agency_name}}</p>
                 </li>
               </ul>
-              {% if user.is_authenticated %}
-              <a href="{% url 'add_to_shortlisted_cart' maid_id=maid.id %}" <button type="button" class="btn bio-btn">Shortlisted</button></a>
+              {% if user.is_authenticated  %}
+                {% if user.role == "Employer"  %}
+                  <a href="{% url 'add_to_shortlisted_cart' maid_id=maid.id %}" <button type="button" class="btn bio-btn">Shortlisted</button></a>
+                {% endif %}
               {% else %}
-              <a href="{% url 'login' %}" <button type="button" class="btn bio-btn">Shortlisted</button></a>
+              <a href="{% url 'login_required' %}" <button type="button" class="btn bio-btn">Shortlisted</button></a>
               {% endif %}
             </div>
     

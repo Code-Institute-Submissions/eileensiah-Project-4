@@ -24,7 +24,8 @@
 
 
 <section>
-<div class='row'>
+	<div style="padding-top:100px; padding-left:100px;">
+	<div class='row'>
  		{% for shortlisted_maid in shortlisted_maids %}
     
    <div class="card mb-3 ml-3 mr-3" style="width: 15rem">
@@ -58,18 +59,17 @@
                   <p>{{shortlisted_maid.maid.agency_name}}</p>
                 </li>
               </ul>
-              <div style='text-align:center'>
-              	<a href="{% url 'remove_from_shortlisted_cart' shortlisted_cart_item_id=shortlisted_maid.id %}">Remove</a>
-              </div>
+              <a href="{% url 'remove_from_shortlisted_cart' shortlisted_cart_item_id=shortlisted_maid.id %}"><button type="button" class="btn shortlisted-btn">Remove</button></a>
            
             </div>
     {% endfor %}
  		
  	</div>	
+ 	</div>
 </section>
 
 <section>
- <div class="container enquiry-body">
+ <div class="container enquiry-body" style="color:#737373;">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2 m-auto">
 			<div class="contact-form">

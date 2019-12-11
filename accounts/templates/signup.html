@@ -1,18 +1,17 @@
-{% extends "agency_base.html" %}
+{% extends "webfront_base.html" %}
 
 
 
 {% block title %}Sign Up{% endblock title %}
 
-
-
 {% block content %}
-<div style='text-align:center'>
+<div style="margin-top:100px">
   <form method="post">
     {% csrf_token %}
     <table class="tablestyle">
       {{ form.as_table }} 
     </table>
+    <br>
     <button type="submit" class="signupbtn">Sign up</button>
   </form>
 </div>

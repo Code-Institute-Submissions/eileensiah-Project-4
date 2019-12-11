@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+    'storages',
     'accounts',
     'webfront',
     'webback',
@@ -136,7 +137,26 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'index'
 
-STRIPE_SECRET_KEY = 'sk_test_yXaKJyVGmVsaXTRhdTD3IWCZ00nswSdGsZ'
-STRIPE_PUBLISHABLE_KEY = 'pk_test_FDphzPFmFJWC96YbkK5mTb2J00Yo7DEwgV'
+STRIPE_PUBLISHABLE_KEY=os.environ['STRIPE_PUBLISHABLE_KEY']
+STRIPE_SECRET_KEY = os.environ['STRIPE_SECRET_KEY']
 
 DATE_FORMAT = "Y-m-d"
+
+AWS_S3_OBJECT_PARAMETERS={
+    'Expires':'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl':'max-age=946800'
+}
+
+AWS_STORAGE_BUCKET_NAME="project-4-maid-platform-django"
+AWS_S3_REGION_NAME="ap-southeast-1"
+AWS_ACCESS_KEY_ID=os.environ["AWS_ACCESS_KEY_ID"]
+AWS_SECRET_ACCESS_KEY=os.environ["AWS_SECRET_ACCESS_KEY"]
+AWS_S3_CUSTOM_DOMAIN="{}.s3.amazonaws.com".format(AWS_STORAGE_BUCKET_NAME)
+
+STATICFILES_STORAGE="storages.backends.s3boto3.S3Boto3Storage"
+
+STATICFILES_LOCATION="static"
+MEDIAFILES_LOCATION="media"
+
+DEFAULT_FILE_STORAGE='custom_storages.MediaStorage'
+STATICFILES_STORAGE="custom_storages.StaticStorage"

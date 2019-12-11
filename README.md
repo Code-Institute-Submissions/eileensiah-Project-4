@@ -78,10 +78,10 @@ A) Web Site
         * The last part is is a banner with enquiry button.
          
 
-B) Employer and Agency "Sign Up" and "Log In"
+B) "Sign Up" and "Log In"
 ============================================
 * This platform have "sign up" and "log in" function for both potential employers and agencies. 
-    * Employer "sign up" and "log in" button is at the right of the navibar.
+* Employer "sign up" and "log in" button is at the right of the navibar.
     * This is only required from employers who have shortlisted FDWs.  Thus, allow them to view their shortlisted cart from any devices.
 
 * Agency "sign up" and "log in" button is at right of the footer.
@@ -100,6 +100,17 @@ c) Agency Admin
     * Maid List page - It showed all the FDWs that belongs to this agency. In the page, agency is also able create, read, edit and delete any biodata.
     * Product page - This page showed the subscription plan for agency to subscribe in order to use this platform.
     * Cart - Is for payment for the subscription plan.
+    
+* I have created 4 agency accounts with following log in information for testing.
+    * user name: cindy ; log in password : cindy123!@# ; Agency name: Nanyang Employment
+    * user name: eric ; log in password : eric123!@# ; Agency name: Asia Care Employment
+    * user name: moon ; log in password : moon123!@# ; Agency Name: MPL Employment
+    * user name: Evon ; log in password : evon123!@# ; Agency Name: Wonderful Employment
+    
+    
+    
+
+D) 
 
 
 

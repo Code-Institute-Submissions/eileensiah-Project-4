@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'storages',
     'accounts',
     'webfront',
-    'webback',
+    # 'webback',
     'agency',
     'payment',
     'product_cart',

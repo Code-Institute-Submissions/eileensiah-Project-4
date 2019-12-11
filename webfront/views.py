@@ -64,6 +64,12 @@ def searchmaid(request):
     }
     return render(request, "searchmaid.html" , context)
     
+def searchmaidresponsibility(request,responsibility):
+    searchmaid = Maid.objects.filter(main_responsibility=responsibility)
+    context = {
+        "searchmaid": searchmaid
+    }
+    return render(request, "searchmaid.html" , context)
 
 
 def contactus(request):

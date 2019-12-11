@@ -46,7 +46,7 @@
       <div class="main-responsibility col-sm-2 px-0">
         <select id="inputState" name="main_responsibility"  class="form-control">
         <option selected value="none">Main Responsibility</option>
-        <option>Cooking </option>
+        <option>Cooking</option>
         <option>Care for Children</option>
         <option>Care for Elderly</option>
         <option>Care for Disabled</option>
@@ -109,7 +109,7 @@
     
     <div class="card-deck six-choices-2">
       <div class="card maid-experience">  
-        <a href="{% url 'searchmaid' %}">
+        <a href="{% url 'searchmaidr' responsibility='Care for Children' %}">
         <img class="card-img-top" src="{% static "images/preference/childrenCare1.jpg"%}" alt="Card image cap">
         <div class="card-body maid-experience">
           <h5 class="card-title">Care for Infant/ Children</h5>
@@ -119,7 +119,7 @@
       </div>
       
       <div class="card maid-experience">
-        <a href="{% url 'searchmaid' %}">
+        <a href="{% url 'searchmaidr' responsibility='Care for Elderly' %}">
         <img class="card-img-top" src="{% static "images/preference/elderlyCare1.jpg" %}" alt="Card image cap">
         <div class="card-body maid-experience">
           <h5 class="card-title">Care for Elderly/ Disable</h5>
@@ -129,7 +129,7 @@
       </div>
       
       <div class="card maid-experience">
-        <a href="{% url 'searchmaid' %}">
+        <a href="{% url 'searchmaidr' responsibility='Cooking' %}">
         <img class="card-img-top" src="{% static "images/preference/cooking1.jpg" %}" alt="Card image cap">
         <div class="card-body maid-experience">
           <h5 class="card-title">General Housework and Cooking</h5>

@@ -94,8 +94,11 @@ B) Employer and Agency "Sign Up" and "Log In"
 
 c) Agency Admin
 ===============
-* On the Agency Admin navibar, there are "General Enquiry" page, "Shortlisted Enquiry", 
-    * Enquiry page - It caputure all the enquries send by 
+* On the Agency Admin navibar, there are "General Enquiry" page, "Shortlisted Enquiry" page, "Maid List" page, "Product" page and "Cart" page.
+    * General enquiry page - For general enquiry, employers do not have any prefered FDWs in mind. Therefore, agencies have to recommend FDWs based on emplyoyer requirements.
+    * Shortlisted enquiry page - Employers have selected their prefered maid and agencies need to revert back to employers on their selection.
+    * Maid List page - It showed all the FDWs that belongs to this agency. In the page, agency is also able create, read, edit and delete any biodata.
+    * Product page - It showed the subscrib
 
 
 

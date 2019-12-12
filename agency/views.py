@@ -36,10 +36,10 @@ def agency_cart(request):
 @agency_required
 def enquiry(request):
     agency = Agency.objects.get(user=request.user)
-    enquiry = list(Enquiry.objects.all())
-    enquiry.reverse()
+    enquirys = list(Enquiry.objects.all())
+    enquirys.reverse()
     return render(request, "enquiry.html", {
-        'enquiry': enquiry,
+        'enquirys': enquirys,
         'agency': agency
     }) 
     
@@ -48,6 +48,7 @@ def enquiry(request):
 def shortlist_enquiry(request):
     agency = Agency.objects.get(user=request.user)
     shortlists = list(Shortlist.objects.filter(agency=agency.agency_name))
+    print(shortlists)
     shortlists.reverse()
     return render(request, "enquiry_shortlist.html", {
         'shortlists': shortlists,

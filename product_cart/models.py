@@ -2,18 +2,16 @@ from django.db import models
 
 # Create your models here.
 
-PLAN_CHOICES = (
-    
-)
 
 class SubPlan(models.Model):
-    name = models.CharField(max_length=50,
+    name = models.CharField(
+        max_length=50,
         choices = [
             ("Basic", "Basic"),
             ("Standard", "Standard"),
             ("Premium", "Premium"),
             ],
-        default="Basic"
+        default="Basic"    
         )
     price = models.IntegerField(
         choices = [
